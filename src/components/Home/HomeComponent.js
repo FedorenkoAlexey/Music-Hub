@@ -10,13 +10,15 @@ const ARTIST = "http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists";
 // "http://ws.audioscrobbler.com/2.0/?method=tag.gettopartists&tag=disco";
 
 const ARTIST_INFO =
-  "http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=Cher";
-//			"http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=";
+  "http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=";
+//	"http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist={artName}&api_key=32084b8c1570367216c6f6bf233d6455&format=json";
 
 let name = "sea";
 
 class HomeComponent extends Component {
   state = {
+    // persons1: [],
+
     chartTrack: {
       tracks: {
         track: []
@@ -47,21 +49,21 @@ class HomeComponent extends Component {
     axios.get(`${ARTIST}${API_KEY}&format=json`).then(res => {
       const artist = res.data;
       this.setState({ artist: artist });
-      console.log(this.state.artist.artists.artist[0].name);
-      console.log(this.state.artist.artists.artist);
+      // console.log(this.state.artist.artists.artist[0].name);
+      // console.log(this.state.artist.artists.artist);
 
-      //			this.setState(prevState => ({
-      //				...prevState,
-      //				artist: {
-      //					...prevState.artist,
-      //					topartists: {
-      //						...prevState.artist.topartists,
-      //						artist: artist.topartists.artist
-      //					}
-      //				}
-      //			}))
+      // this.setState(prevState => ({
+      //   ...prevState,
+      //   artist: {
+      //     ...prevState.artist,
+      //     artists: {
+      //       ...prevState.artist.artists,
+      //       artist: artist.artists.artist
+      //     }
+      //   }
+      // }));
 
-      //      console.log(artist.topartists.artist);
+      // console.log("64: ", artist.artists.artist);
     });
 
     axios.get(`https://jsonplaceholder.typicode.com/users`).then(res => {
@@ -69,17 +71,27 @@ class HomeComponent extends Component {
       this.setState({ persons1: persons1 });
       console.log(this.state.persons1);
     });
+
+    // console.log("State: ", this.state);
   }
-  getTrack = () => {
-    // axios
-    //   .get(
-    //     "http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=Cher&api_key=32084b8c1570367216c6f6bf233d6455&format=json"
-    //   )
-    //   .then(res => {
-    //     const artist1 = res.data;
-    //     this.setState({ artInfo: artist1 });
-    //     console.log("333", this.artist1);
-    //   });
+  getTrack = (name?) => {
+    let artName = name;
+    axios
+      .get(`${ARTIST_INFO}${artName}${API_KEY}&format=json`)
+      .then(res => {
+        const result = res.data;
+        this.setState({ artInfo: result });
+        console.log(result);
+      })
+      .then(() => {
+        console.log("State1: ", this.state.artInfo);
+        console.log("Bio: ", this.state.artInfo.artist.bio.content);
+      });
+    // console.log("Info: ", this.state.artInfo);
+
+    // setTimeout(() => {
+    //   console.log("State: ", this.state);
+    // }, 500);
   };
 
   render() {
@@ -91,18 +103,22 @@ class HomeComponent extends Component {
           {this.state.chartTrack.tracks.track.map(track => (
             <li key={track.listeners}>
               {track.name} -{" "}
-              <a key={track.listeners + 2}>
+              <a
+                key={track.listeners + 2}
+                onClick={() => this.getTrack(track.artist.name)}
+              >
                 <b>{track.artist.name}</b>
               </a>
             </li>
           ))}
         </ul>
-
-        {/* <ul>
-          {this.state.artist.artists.artist.map(artist => (
-            <li key={artist.mbid}>{artist.name} </li>
-          ))}
-        </ul> */}
+        <div className="art-info">
+          {this.state.artInfo.artist ? (
+            <p>{this.state.artInfo.artist.bio.content}</p>
+          ) : (
+            <p>NO</p>
+          )}
+        </div>
       </div>
     );
   }
