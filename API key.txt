@@ -1,0 +1,4 @@
+Application name	Music hub
+API key			32084b8c1570367216c6f6bf233d6455
+Shared secret		7b6ed6360c7a4d593745a9f94a117b4a
+Registered to		Messer-23
