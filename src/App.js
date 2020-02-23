@@ -1,14 +1,15 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import HomeComponent from "./components/Home/HomeComponent";
+import Routes from "./routes/Routes";
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
-      <HomeComponent />
+      <header className="App-header">
+        <Routes />
+      </header>
     </div>
   );
-}
+};
 
 export default App;
