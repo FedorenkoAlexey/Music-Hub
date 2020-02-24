@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { NavLink } from "react-router-dom";
 import axios from "axios";
 // import { NavLink } from "react-router-dom";
 
@@ -13,7 +14,6 @@ const JSON = "&format=json";
 
 class ArtistComponent extends Component {
   componentDidMount() {
-    // const { chartTracks } = this.props;
     axios.get(`${BASE_URL}${Chart_Top_Track}${API_KEY}${JSON}`).then(res => {
       this.props.getChartTracks(res.data);
     });
@@ -21,7 +21,8 @@ class ArtistComponent extends Component {
 
   getInfo = () => {
     console.log("topTracks: ", this.props.chartTracks.tracks.track[1]);
-    console.log("Art-Info: ", this.props.artistInfo.artist.bio.content);
+    console.log("Art-Info: ", this.props.artistInfo.artist);
+    console.log("PROPS: ", this.props);
   };
 
   getArtInfo = artistName => {
@@ -48,7 +49,16 @@ class ArtistComponent extends Component {
                 key={track.listeners + 2}
                 onClick={() => this.getArtInfo(track.artist.name)}
               >
-                <b>{track.artist.name}</b>
+                <b>
+                  {" "}
+                  <NavLink
+                    activeClassName="active"
+                    to={`/artist/${track.artist.name}`}
+                  >
+                    {" "}
+                    {track.artist.name}
+                  </NavLink>
+                </b>
               </span>
             </li>
           ))}
@@ -61,7 +71,7 @@ class ArtistComponent extends Component {
   }
 }
 
-const mapState = state => {
+const mapState = (state, ownProps) => {
   return {
     chartTracks: state.trackReducer.chartTracks,
     artistInfo: state.trackReducer.artistInfo

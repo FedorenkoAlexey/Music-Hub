@@ -2,6 +2,11 @@ import { GET_CHART_TRACKS } from "../actions/getTracks";
 import { GET_ARTIST_INFO } from "../actions/getTracks";
 
 const initState = {
+  res: [],
+  test: {
+    id: 1234,
+    name: "Test Actor"
+  },
   chartTracks: {
     tracks: {
       track: []

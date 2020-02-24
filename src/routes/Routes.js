@@ -10,6 +10,7 @@ import {
 import HeaderComponent from "../components/Header/HeaderComponent";
 import HomeComponent from "../components/Home/HomeComponent";
 import ArtistComponent from "../components/Artists/ArtistsComponent";
+import ArtistNameComponent from "../components/ArtistName/ArtistNameComponent";
 
 class Routes extends PureComponent {
   render() {
@@ -19,7 +20,8 @@ class Routes extends PureComponent {
           <HeaderComponent />
           <Switch>
             <Route exact path="/home" component={HomeComponent} />
-            <Route path="/artists" component={ArtistComponent} />
+            <Route exact path="/artists" component={ArtistComponent} />
+            <Route path="/artist/:id" component={ArtistNameComponent} />
             {/* <Redirect from="/" to="/" /> */}
           </Switch>
         </BrowserRouter>
