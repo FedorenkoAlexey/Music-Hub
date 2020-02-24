@@ -20,6 +20,7 @@ class Routes extends PureComponent {
           <Switch>
             <Route exact path="/home" component={HomeComponent} />
             <Route path="/artists" component={ArtistComponent} />
+            {/* <Redirect from="/" to="/" /> */}
           </Switch>
         </BrowserRouter>
       </div>

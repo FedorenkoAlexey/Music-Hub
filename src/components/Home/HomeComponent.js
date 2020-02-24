@@ -72,32 +72,7 @@ class HomeComponent extends Component {
   };
 
   render() {
-    return (
-      <div>
-        <button onClick={this.getTrack}>get Track</button>
-
-        <ul>
-          {this.state.chartTrack.tracks.track.map(track => (
-            <li key={track.listeners}>
-              {track.name} -{" "}
-              <span
-                key={track.listeners + 2}
-                onClick={() => this.getTrack(track.artist.name)}
-              >
-                <b>{track.artist.name}</b>
-              </span>
-            </li>
-          ))}
-        </ul>
-        <div className="art-info">
-          {this.state.artInfo.artist ? (
-            <p>{this.state.artInfo.artist.bio.content}</p>
-          ) : (
-            <p>NO</p>
-          )}
-        </div>
-      </div>
-    );
+    return <div>Home Component</div>;
   }
 }
 
