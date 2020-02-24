@@ -15,22 +15,6 @@ const ARTIST_INFO =
 //	"http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist={artName}&api_key=32084b8c1570367216c6f6bf233d6455&format=json";
 
 class HomeComponent extends Component {
-  state = {
-    chartTrack: {
-      tracks: {
-        track: []
-      }
-    },
-    artInfo: [],
-
-    artist: {
-      artists: {
-        artist: []
-      }
-    },
-    isLoad: true
-  };
-
   componentDidMount() {
     axios.get(`${Chart_Top_Track}${API_KEY}&format=json`).then(res => {
       const track = res.data;
@@ -64,11 +48,6 @@ class HomeComponent extends Component {
         console.log("State1: ", this.state.artInfo);
         console.log("Bio: ", this.state.artInfo.artist.bio.content);
       });
-    // console.log("Info: ", this.state.artInfo);
-
-    // setTimeout(() => {
-    //   console.log("State: ", this.state);
-    // }, 500);
   };
 
   render() {

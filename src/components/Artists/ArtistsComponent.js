@@ -20,7 +20,6 @@ class ArtistComponent extends Component {
   }
 
   getInfo = () => {
-    console.log("topTracks: ", this.props.chartTracks.tracks.track[1]);
     console.log("Art-Info: ", this.props.artistInfo.artist);
     console.log("PROPS: ", this.props);
   };
@@ -63,9 +62,6 @@ class ArtistComponent extends Component {
             </li>
           ))}
         </ul>
-        <div className="art-info">
-          {artist ? <p>{artist.bio.content}</p> : <p>NO</p>}
-        </div>
       </div>
     );
   }
