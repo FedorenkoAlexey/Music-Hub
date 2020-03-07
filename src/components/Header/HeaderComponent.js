@@ -10,8 +10,8 @@ class HeaderComponent extends Component {
         <NavLink to="/home" activeClassName="active" className="text-link">
           Home
         </NavLink>
-        <NavLink to="/artists" activeClassName="active" className="text-link">
-          Artists
+        <NavLink to="/chart" activeClassName="active" className="text-link">
+          Top Chart Track
         </NavLink>
       </div>
     );

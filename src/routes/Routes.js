@@ -9,7 +9,7 @@ import {
 
 import HeaderComponent from "../components/Header/HeaderComponent";
 import HomeComponent from "../components/Home/HomeComponent";
-import ArtistComponent from "../components/Artists/ArtistsComponent";
+import ChartTrackComponent from "../components/ChartTrack/ChartTrackComponent";
 import ArtistNameComponent from "../components/ArtistName/ArtistNameComponent";
 
 class Routes extends PureComponent {
@@ -20,9 +20,8 @@ class Routes extends PureComponent {
           <HeaderComponent />
           <Switch>
             <Route exact path="/home" component={HomeComponent} />
-            <Route exact path="/artists" component={ArtistComponent} />
+            <Route exact path="/chart" component={ChartTrackComponent} />
             <Route path="/artist/:id" component={ArtistNameComponent} />
-            {/* <Redirect from="/" to="/" /> */}
           </Switch>
         </BrowserRouter>
       </div>
