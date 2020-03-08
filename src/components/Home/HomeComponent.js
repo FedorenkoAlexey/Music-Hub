@@ -1,30 +1,21 @@
 import React, { Component } from "react";
-// import axios from "axios";
+import googleService from "../../services/googleService";
 import { connect } from "react-redux";
 
+import { getGoogleName } from "../../store/actions/googleAuth";
+
 class HomeComponent extends Component {
+  apiGoogle = new googleService();
   componentDidMount() {
-    window.gapi.load("auth2", function() {
-      window.gapi.auth2
-        .init({
-          client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID
-        })
-        .then(
-          () => console.log("Inin OK"),
-          () => console.log("Init ERR")
-        );
-    });
+    this.apiGoogle.googleInit();
   }
 
   onSignIn = () => {
-    const isAuthOk = googleUser => {
-      console.log("googleUser:", googleUser.getBasicProfile().getName());
-    };
-
-    const GoogleAuth = window.gapi.auth2.getAuthInstance();
-    GoogleAuth.signIn({ scope: "profile email" }).then(isAuthOk, () =>
-      console.log("Auth ERR")
-    );
+    this.apiGoogle.signIn().then(res => {
+      this.props.getGoogleName(res.getName());
+      // console.log("RES", res.Ad, "TOKEN", res.dV, res.getName());
+      // console.log(this.props);
+    });
   };
 
   render() {
@@ -40,9 +31,14 @@ class HomeComponent extends Component {
 }
 
 const mapState = state => {
-  return {};
+  console.log(state.googleReducer.googleName);
+  return {
+    googleName: state.googleReducer.googleName
+  };
 };
 
-const dispatch = {};
+const dispatch = {
+  getGoogleName: getGoogleName
+};
 
 export default connect(mapState, dispatch)(HomeComponent);
