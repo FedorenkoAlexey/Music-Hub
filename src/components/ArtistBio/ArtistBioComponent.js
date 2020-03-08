@@ -8,11 +8,11 @@
 // export default ArtistBioComponent;
 
 import React, { Component } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { connect } from "react-redux";
-import { Route, Switch, NavLink } from "react-router-dom";
+// import { Route, Switch, NavLink } from "react-router-dom";
 
-import { getArtistInfo } from "../../store/actions/getTracks";
+// import { getArtistInfo } from "../../store/actions/getTracks";
 
 class ArtistBioComponent extends Component {
   componentDidMount() {

@@ -11,7 +11,7 @@ import { getChartTracks, getArtistInfo } from "../../store/actions/getTracks";
 
 const BASE_URL = "http://ws.audioscrobbler.com/2.0/?method=";
 const API_KEY = "&api_key=32084b8c1570367216c6f6bf233d6455";
-const Chart_Top_Track = "chart.gettoptracks";
+// const Chart_Top_Track = "chart.gettoptracks";
 const ARTIST_INFO = "artist.getinfo&artist=";
 const JSON = "&format=json";
 
@@ -25,10 +25,10 @@ class ChartTrackComponent extends Component {
     });
   }
 
-  // getInfo = () => {
-  //   console.log("Art-Info: ", this.props.artistInfo.artist);
-  //   console.log("PROPS: ", this.props);
-  // };
+  getInfo = () => {
+    // console.log("Art-Info: ", this.props.artistInfo.artist);
+    // console.log("PROPS: ", this.props);
+  };
 
   getArtInfo = artistName => {
     axios
@@ -52,7 +52,7 @@ class ChartTrackComponent extends Component {
       <div className="chart-container">
         CHART TRACK Component
         <br></br>
-        {/* <button onClick={this.getInfo}>get Info</button> */}
+        <button onClick={this.getInfo}>get Info</button>
         <div className="nav-chart">
           {/* <NavLink
             to={`/chart/rock`}

@@ -1,0 +1,11 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.header .header-nav {
+  border: 1px solid #fd7272;
+}
+.header .header-user {
+  border: 1px solid #72fd89;
+}
