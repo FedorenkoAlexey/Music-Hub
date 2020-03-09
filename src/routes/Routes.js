@@ -1,11 +1,6 @@
 import React, { PureComponent } from "react";
-// import { connect } from "react-redux";
-import {
-  BrowserRouter,
-  Route,
-  Switch
-  // , Redirect
-} from "react-router-dom";
+import { connect } from "react-redux";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 import HeaderComponent from "../components/Header/HeaderComponent";
 import HomeComponent from "../components/Home/HomeComponent";
@@ -13,6 +8,10 @@ import ChartTrackComponent from "../components/ChartTrack/ChartTrackComponent";
 import ArtistNameComponent from "../components/ArtistName/ArtistNameComponent";
 
 class Routes extends PureComponent {
+  componentDidMount() {
+    // console.log("DID", this.props);
+  }
+
   render() {
     return (
       <div className="app-routes">
@@ -20,7 +19,11 @@ class Routes extends PureComponent {
           <HeaderComponent />
           <Switch>
             <Route exact path="/" component={HomeComponent} />
-            <Route exact path="/chart" component={ChartTrackComponent} />
+            {this.props.isAuth ? (
+              <Route exact path="/chart" component={ChartTrackComponent} />
+            ) : (
+              <Redirect from="/" to="/" />
+            )}
             <Route path="/artist/:id" component={ArtistNameComponent} />
           </Switch>
         </BrowserRouter>
@@ -29,6 +32,12 @@ class Routes extends PureComponent {
   }
 }
 
-// Routes.defaultProps = {};
+const mapState = state => {
+  return {
+    isAuth: state.googleReducer.isAuth
+  };
+};
 
-export default Routes;
+Routes.defaultProps = {};
+
+export default connect(mapState)(Routes);

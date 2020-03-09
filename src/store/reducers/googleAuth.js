@@ -1,4 +1,5 @@
-import { GOOGLE_AUTH_IN } from "../actions/googleAuth";
+import { SET_GOOGLE_NAME } from "../actions/googleAuth";
+import { IS_GOOGLE_AUTH } from "../actions/googleAuth";
 
 const initState = {
   googleName: null,
@@ -8,10 +9,15 @@ const initState = {
 
 export const googleReducer = (state = initState, action) => {
   switch (action.type) {
-    case GOOGLE_AUTH_IN:
+    case SET_GOOGLE_NAME:
       return {
         ...state,
         googleName: action.payload
+      };
+    case IS_GOOGLE_AUTH:
+      return {
+        ...state,
+        isAuth: action.payload
       };
   }
   return state;

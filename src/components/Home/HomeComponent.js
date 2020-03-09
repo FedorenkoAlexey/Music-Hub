@@ -1,19 +1,26 @@
 import React, { Component } from "react";
 import googleService from "../../services/googleService";
 import { connect } from "react-redux";
+import cookie from "react-cookies";
 
-import { getGoogleName } from "../../store/actions/googleAuth";
+import { getGoogleName, isGoogleAuth } from "../../store/actions/googleAuth";
 
 class HomeComponent extends Component {
   apiGoogle = new googleService();
+
   componentDidMount() {
     this.apiGoogle.googleInit();
+    const logged = cookie.load("token");
+    logged ? this.props.isGoogleAuth(true) : console.log("Cookies empty");
   }
 
   onSignIn = () => {
     this.apiGoogle.signIn().then(res => {
       this.props.getGoogleName(res.getName());
-      // console.log("RES", res.Ad, "TOKEN", res.dV, res.getName());
+      this.props.isGoogleAuth(true);
+      cookie.save("token", res.getName(), { path: "/" });
+      console.log(cookie.load("token"));
+      // console.log("RES", res, "TOKEN: ", res.dV, res.getName());
       // console.log(this.props);
     });
   };
@@ -31,14 +38,15 @@ class HomeComponent extends Component {
 }
 
 const mapState = state => {
-  console.log(state.googleReducer.googleName);
   return {
-    googleName: state.googleReducer.googleName
+    googleName: state.googleReducer.googleName,
+    isAuth: state.googleReducer.isAuth
   };
 };
 
 const dispatch = {
-  getGoogleName: getGoogleName
+  getGoogleName: getGoogleName,
+  isGoogleAuth: isGoogleAuth
 };
 
 export default connect(mapState, dispatch)(HomeComponent);
