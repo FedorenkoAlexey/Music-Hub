@@ -25,10 +25,10 @@ class ChartTrackComponent extends Component {
     });
   }
 
-  getInfo = () => {
-    // console.log("Art-Info: ", this.props.artistInfo.artist);
-    // console.log("PROPS: ", this.props);
-  };
+  // getInfo = () => {
+  //   console.log("Art-Info: ", this.props.artistInfo.artist);
+  //   console.log("PROPS: ", this.props);
+  // };
 
   getArtInfo = artistName => {
     axios
@@ -42,6 +42,7 @@ class ChartTrackComponent extends Component {
     this.apiService.getTagChartTracks(tag).then(res => {
       // console.log("Res-Tag: ", res);
       this.props.getChartTracks(res.data);
+      // console.log("55555", this.props.chartTracks.tracks.track);
     });
   };
 
@@ -52,15 +53,15 @@ class ChartTrackComponent extends Component {
       <div className="chart-container">
         CHART TRACK Component
         <br></br>
-        <button onClick={this.getInfo}>get Info</button>
+        {/* <button onClick={this.getInfo}>get Info</button> */}
         <div className="nav-chart">
-          {/* <NavLink
+          <NavLink
             to={`/chart/rock`}
             activeClassName="active"
             className="text-link"
           >
             ROCK
-          </NavLink> */}
+          </NavLink>
           <button onClick={() => this.getTagChart("rock")}>ROCK</button>
           <button onClick={() => this.getTagChart("pop")}>POP</button>
           <button onClick={() => this.getTagChart("metall")}>METALL</button>
@@ -68,7 +69,7 @@ class ChartTrackComponent extends Component {
           <button onClick={() => this.getTagChart("dance")}>DANCE</button>
         </div>
         <Switch>
-          <Route path="/chart/:rock" component={ChartTagComponent} />
+          <Route exact path="/chart/:id" component={ChartTagComponent} />
         </Switch>
         <ul>
           {track.map(track => (

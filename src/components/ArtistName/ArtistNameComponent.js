@@ -3,7 +3,8 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { Route, Switch, NavLink } from "react-router-dom";
 
-import ArtistBioComponent from "../ArtistBio/ArtistBioComponent";
+import ArtistBioComponent from "../ArtistInfo/ArtistBioComponent";
+import ArtistTopTrackComponent from "../ArtistInfo/ArtistTopTrackComponent";
 import artistService from "../../services/artistService";
 // import ChartTagComponent from "../ChartTag/ChartTagComponent";
 
@@ -24,19 +25,6 @@ class ArtistNameComponent extends Component {
     // let image = "";
     // let image =
     //   "https://lastfm.freetls.fastly.net/i/u/300x300/71cc320aa75906f6e4760aaaeb96b845.png";
-    axios
-      .get(`${BASE_URL}${ARTIST_INFO}${artistName}${API_KEY}${JSON}`)
-      .then(res => {
-        this.props.getArtistInfo(res.data);
-        let bio = this.props.artistInfo.artist.bio.content;
-        console.log(res.data.artist.stats);
-        return bio;
-      })
-      .then(bio => {
-        let i = bio.indexOf("<a");
-        let answ = bio.slice(0, i);
-        // console.log(answ);
-      });
 
     this.api.getTopAlbums(artistName).then(result => {
       this.props.getTopAlbums(result.data.topalbums);
@@ -44,7 +32,6 @@ class ArtistNameComponent extends Component {
       // console.log("ALBUMS: ", this.props.topAlbums.album[0].image[3]["#text"]);
       console.log("ALBUMS: ", this.props.topAlbums);
     });
-    // console.log(this.image);
   }
 
   render() {
@@ -78,16 +65,15 @@ class ArtistNameComponent extends Component {
           activeClassName="active"
           className="text-link"
         >
-          ROCK
+          TOP_TRACKS
         </NavLink>
         <Switch>
-          <Route path="/artist/:id/:bio" component={ArtistBioComponent} />
-          {/* <Route path="/artist/:toptracks" component={ArtistTopTracksComponent} /> */}
+          <Route path="/artist/:id/bio" component={ArtistBioComponent} />
+          <Route
+            path="/artist/:id/toptracks"
+            component={ArtistTopTrackComponent}
+          />
         </Switch>
-        <p>{artist.name}</p>
-        <div className="art-info">
-          {artist ? <p>{artist.bio.content}</p> : <p>NO</p>}
-        </div>
       </div>
     );
   }

@@ -20,7 +20,7 @@ class Routes extends PureComponent {
           <Switch>
             <Route exact path="/" component={HomeComponent} />
             {this.props.isAuth ? (
-              <Route exact path="/chart" component={ChartTrackComponent} />
+              <Route path="/chart" component={ChartTrackComponent} />
             ) : (
               <Redirect from="/" to="/" />
             )}

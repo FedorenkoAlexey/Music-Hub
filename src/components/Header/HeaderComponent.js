@@ -8,9 +8,12 @@ import "./styles.css";
 
 class HeaderComponent extends Component {
   apiGoogle = new googleService();
+
   componentDidMount() {
     let token = cookie.load("token");
-    console.log(token);
+    this.props.getGoogleName(token);
+
+    console.log("NAME", this.props.googleName, "TOKEN", token);
   }
 
   onSignOut = () => {

@@ -1,4 +1,5 @@
 import { GET_CHART_TRACKS } from "../actions/getTracks";
+import { GET_TOP_TRACKS } from "../actions/getTracks";
 import { GET_ARTIST_INFO } from "../actions/getTracks";
 import { GET_TOP_ALBUMS } from "../actions/getTracks";
 
@@ -13,6 +14,13 @@ const initState = {
       bio: [],
       stats: []
     }
+  },
+  topTracks: {
+    track: []
+    // {
+    //   name: [],
+    //   playcount: []
+    // }
   },
   topAlbums: {
     album: [
@@ -33,6 +41,11 @@ export const trackReducer = (state = initState, action) => {
       return {
         ...state,
         chartTracks: action.payload
+      };
+    case GET_TOP_TRACKS:
+      return {
+        ...state,
+        topTracks: action.payload
       };
     case GET_ARTIST_INFO:
       return {
