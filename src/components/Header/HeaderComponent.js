@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import googleService from "../../services/googleService";
+import searchService from "../../services/searchService";
 import { getGoogleName, isGoogleAuth } from "../../store/actions/googleAuth";
 import { setSearchValue } from "../../store/actions/getTracks";
 import cookie from "react-cookies";
@@ -9,6 +10,7 @@ import "./styles.css";
 
 class HeaderComponent extends Component {
   apiGoogle = new googleService();
+  apiSearch = new searchService();
 
   componentDidMount() {
     let token = cookie.load("token");
@@ -30,8 +32,16 @@ class HeaderComponent extends Component {
     this.props.setSearchValue(search);
   };
 
-  onSearch = () => {
-    console.log("Start search: ", this.props.searchValue);
+  onSearch = params => {
+    this.apiSearch.getSearchArtist(params).then(res => {
+      console.log("RES_SEARCH_ARTIST", res.data.results.artistmatches);
+    });
+    this.apiSearch.getSearchAlbums(params).then(res => {
+      console.log("RES_SEARCH_ALBUM", res.data.results.albummatches);
+    });
+    this.apiSearch.getSearchTracks(params).then(res => {
+      console.log("RES_SEARCH_TRAKS", res.data.results.trackmatches);
+    });
   };
 
   render() {
@@ -79,7 +89,7 @@ class HeaderComponent extends Component {
           <NavLink
             activeClassName="active"
             to={`/search/`}
-            onClick={this.onSearch}
+            onClick={() => this.onSearch(searchValue)}
           >
             search
           </NavLink>

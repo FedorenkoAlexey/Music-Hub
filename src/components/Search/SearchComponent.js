@@ -10,7 +10,7 @@ class SearchComponent extends Component {
   apiService = new apiService();
 
   componentDidMount() {
-    const artistName = this.props.match.params.id || "";
+    // const artistName = this.props.match.params.id || "";
   }
 
   getArtInfo = artistName => {
