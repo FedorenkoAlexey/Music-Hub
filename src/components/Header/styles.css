@@ -1,19 +1,36 @@
-.header {
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.wrapper .header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   height: 200px;
 }
-.header .header-logo {
+.wrapper .header .header-logo {
   margin-left: 30px;
+  font-style: italic;
   width: 200px;
   border: 1px solid #72fd89;
 }
-.header .header-nav {
-  border: 1px solid #fd7272;
+.wrapper .header .header-nav {
+  color: #ff861c;
 }
-.header .header-user {
+.wrapper .header .header-user {
   margin-right: 30px;
   width: 200px;
   border: 1px solid #72fd89;
+}
+.wrapper .search {
+  border: 1px dotted salmon;
+}
+.wrapper .search input {
+  width: 89%;
+  height: 25px;
+}
+.wrapper .search button {
+  width: 10%;
+  height: 30px;
+  min-width: 50px;
 }

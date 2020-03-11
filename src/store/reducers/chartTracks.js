@@ -2,8 +2,10 @@ import { GET_CHART_TRACKS } from "../actions/getTracks";
 import { GET_TOP_TRACKS } from "../actions/getTracks";
 import { GET_ARTIST_INFO } from "../actions/getTracks";
 import { GET_TOP_ALBUMS } from "../actions/getTracks";
+import { SET_SEARCH_VALUE } from "../actions/getTracks";
 
 const initState = {
+  searchValue: "",
   chartTracks: {
     tracks: {
       track: []
@@ -56,6 +58,11 @@ export const trackReducer = (state = initState, action) => {
       return {
         ...state,
         topAlbums: action.payload
+      };
+    case SET_SEARCH_VALUE:
+      return {
+        ...state,
+        searchValue: action.payload
       };
   }
   return state;

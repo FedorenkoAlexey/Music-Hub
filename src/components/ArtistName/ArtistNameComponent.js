@@ -6,15 +6,9 @@ import { Route, Switch, NavLink } from "react-router-dom";
 import ArtistBioComponent from "../ArtistInfo/ArtistBioComponent";
 import ArtistTopTrackComponent from "../ArtistInfo/ArtistTopTrackComponent";
 import artistService from "../../services/artistService";
-// import ChartTagComponent from "../ChartTag/ChartTagComponent";
 
 import { getArtistInfo, getTopAlbums } from "../../store/actions/getTracks";
 import "./styles.css";
-
-const BASE_URL = "http://ws.audioscrobbler.com/2.0/?method=";
-const API_KEY = "&api_key=32084b8c1570367216c6f6bf233d6455";
-const ARTIST_INFO = "artist.getinfo&artist=";
-const JSON = "&format=json";
 
 class ArtistNameComponent extends Component {
   api = new artistService();
@@ -22,6 +16,9 @@ class ArtistNameComponent extends Component {
 
   componentDidMount() {
     const artistName = this.props.match.params.id || "";
+    console.log("artistName", artistName);
+    console.log("this.props.artistInfo", this.props.artistInfo);
+
     // let image = "";
     // let image =
     //   "https://lastfm.freetls.fastly.net/i/u/300x300/71cc320aa75906f6e4760aaaeb96b845.png";
@@ -30,7 +27,7 @@ class ArtistNameComponent extends Component {
       this.props.getTopAlbums(result.data.topalbums);
       this.image = this.props.topAlbums.album[0].image[3]["#text"];
       // console.log("ALBUMS: ", this.props.topAlbums.album[0].image[3]["#text"]);
-      console.log("ALBUMS: ", this.props.topAlbums);
+      // console.log("ALBUMS: ", this.props.topAlbums);
     });
   }
 

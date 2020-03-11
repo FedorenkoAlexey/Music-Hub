@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import googleService from "../../services/googleService";
 import { getGoogleName, isGoogleAuth } from "../../store/actions/googleAuth";
+import { setSearchValue } from "../../store/actions/getTracks";
 import cookie from "react-cookies";
 import "./styles.css";
 
@@ -12,7 +13,6 @@ class HeaderComponent extends Component {
   componentDidMount() {
     let token = cookie.load("token");
     this.props.getGoogleName(token);
-
     console.log("NAME", this.props.googleName, "TOKEN", token);
   }
 
@@ -25,38 +25,64 @@ class HeaderComponent extends Component {
     });
   };
 
+  onSearchHandle = e => {
+    let search = e.target.value;
+    this.props.setSearchValue(search);
+  };
+
+  onSearch = () => {
+    console.log("Start search: ", this.props.searchValue);
+  };
+
   render() {
-    const { googleName, isAuth } = this.props;
+    const { googleName, isAuth, searchValue } = this.props;
     return (
-      <div className="header">
-        <div className="header-logo">MusicHUB FM</div>
-        <div className="header-nav">
-          {this.props.isAuth ? (
-            <span>
-              <NavLink to="/" activeClassName="active" className="text-link">
-                Home
-              </NavLink>
-              <NavLink
-                to="/chart"
-                activeClassName="active"
-                className="text-link"
-              >
-                Top Chart Track
-              </NavLink>
-            </span>
-          ) : (
-            <h2>Sign in please</h2>
-          )}
+      <div className="wrapper">
+        <div className="header">
+          <div className="header-logo">MusicHUB FM</div>
+          <div className="header-nav">
+            {this.props.isAuth ? (
+              <span>
+                <NavLink to="/" activeClassName="active" className="text-link">
+                  Home
+                </NavLink>
+                <NavLink
+                  to="/chart"
+                  activeClassName="active"
+                  className="text-link"
+                >
+                  Top Chart Track
+                </NavLink>
+              </span>
+            ) : (
+              <h2>Sign in please</h2>
+            )}
+          </div>
+          <div className="header-user">
+            {isAuth && (
+              <div>
+                <p className="welcome">Welcome</p> {googleName}
+                <p>
+                  <button onClick={this.onSignOut}>Sign Out</button>
+                </p>
+              </div>
+            )}
+          </div>
         </div>
-        <div className="header-user">
-          {isAuth && (
-            <div>
-              <p className="welcome">Welcome</p> {googleName}
-              <p>
-                <button onClick={this.onSignOut}>Sign Out</button>
-              </p>
-            </div>
-          )}
+        <div className="search">
+          <input
+            type="text"
+            value={searchValue}
+            onChange={this.onSearchHandle}
+          />
+          {/* <button onClick={this.onSearch}>Search</button> */}
+          <NavLink
+            activeClassName="active"
+            to={`/search/`}
+            onClick={this.onSearch}
+          >
+            search
+          </NavLink>
         </div>
       </div>
     );
@@ -66,13 +92,15 @@ class HeaderComponent extends Component {
 const mapState = state => {
   return {
     googleName: state.googleReducer.googleName,
-    isAuth: state.googleReducer.isAuth
+    isAuth: state.googleReducer.isAuth,
+    searchValue: state.trackReducer.searchValue
   };
 };
 
 const dispatch = {
   getGoogleName: getGoogleName,
-  isGoogleAuth: isGoogleAuth
+  isGoogleAuth: isGoogleAuth,
+  setSearchValue: setSearchValue
 };
 
 export default connect(mapState, dispatch)(HeaderComponent);

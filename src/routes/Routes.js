@@ -6,6 +6,7 @@ import HeaderComponent from "../components/Header/HeaderComponent";
 import HomeComponent from "../components/Home/HomeComponent";
 import ChartTrackComponent from "../components/ChartTrack/ChartTrackComponent";
 import ArtistNameComponent from "../components/ArtistName/ArtistNameComponent";
+import SearchComponent from "../components/Search/SearchComponent";
 
 class Routes extends PureComponent {
   componentDidMount() {
@@ -25,6 +26,7 @@ class Routes extends PureComponent {
               <Redirect from="/" to="/" />
             )}
             <Route path="/artist/:id" component={ArtistNameComponent} />
+            <Route path="/search" component={SearchComponent} />
           </Switch>
         </BrowserRouter>
       </div>
