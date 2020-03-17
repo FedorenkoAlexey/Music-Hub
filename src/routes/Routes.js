@@ -26,7 +26,7 @@ class Routes extends PureComponent {
               <Redirect from="/" to="/" />
             )}
             <Route path="/artist/:id" component={ArtistNameComponent} />
-            <Route path="/search" component={SearchComponent} />
+            <Route path="/search/:id" component={SearchComponent} />
           </Switch>
         </BrowserRouter>
       </div>

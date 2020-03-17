@@ -11,7 +11,12 @@ import "./styles.css";
 
 class ArtistNameComponent extends Component {
   api = new artistService();
-  image = "";
+  constructor(props) {
+    super(props);
+    this.state = {
+      image: ""
+    };
+  }
 
   componentDidMount() {
     const artistName = this.props.match.params.id || "";
@@ -24,7 +29,10 @@ class ArtistNameComponent extends Component {
 
     this.api.getTopAlbums(artistName).then(result => {
       this.props.getTopAlbums(result.data.topalbums);
-      this.image = this.props.topAlbums.album[0].image[3]["#text"];
+      this.setState({
+        image: this.props.topAlbums.album[0].image[3]["#text"]
+      });
+      // this.image = this.props.topAlbums.album[0].image[3]["#text"];
       // console.log("ALBUMS: ", this.props.topAlbums.album[0].image[3]["#text"]);
       // console.log("ALBUMS: ", this.props.topAlbums);
     });
@@ -45,7 +53,7 @@ class ArtistNameComponent extends Component {
             </div>
           </div>
           <div className="artist-img">
-            {/* <img src={album[0].image[3]["#text"]} alt="" /> */}
+            <img src={this.state.image} alt={artist.name} />
           </div>
         </div>
         <div className="artist-nav"></div>

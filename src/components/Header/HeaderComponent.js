@@ -52,7 +52,7 @@ class HeaderComponent extends Component {
           <div className="header-logo">MusicHUB FM</div>
           <div className="header-nav">
             {this.props.isAuth ? (
-              <span>
+              <span className="navlink">
                 <NavLink to="/" activeClassName="active" className="text-link">
                   Home
                 </NavLink>
@@ -88,7 +88,7 @@ class HeaderComponent extends Component {
           {/* <button onClick={this.onSearch}>Search</button> */}
           <NavLink
             activeClassName="active"
-            to={`/search/`}
+            to={`/search/${searchValue}`}
             onClick={() => this.onSearch(searchValue)}
           >
             search
