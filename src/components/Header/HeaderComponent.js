@@ -4,6 +4,11 @@ import { NavLink } from "react-router-dom";
 import googleService from "../../services/googleService";
 import searchService from "../../services/searchService";
 import { getGoogleName, isGoogleAuth } from "../../store/actions/googleAuth";
+import {
+  getSearchAlbums,
+  getSearchArtist,
+  getSearchTracks
+} from "../../store/actions/search";
 import { setSearchValue } from "../../store/actions/getTracks";
 import cookie from "react-cookies";
 import "./styles.css";
@@ -34,13 +39,16 @@ class HeaderComponent extends Component {
 
   onSearch = params => {
     this.apiSearch.getSearchArtist(params).then(res => {
-      console.log("RES_SEARCH_ARTIST", res.data.results.artistmatches);
+      // console.log("RES_SEARCH_ARTIST", res.data.results.artistmatches);
     });
+
     this.apiSearch.getSearchAlbums(params).then(res => {
-      console.log("RES_SEARCH_ALBUM", res.data.results.albummatches);
+      this.props.getSearchAlbums(res.data.results.albummatches);
     });
+
     this.apiSearch.getSearchTracks(params).then(res => {
-      console.log("RES_SEARCH_TRAKS", res.data.results.trackmatches);
+      console.log("SECOND", res.data.results.trackmatches);
+      // console.log("RES_SEARCH_TRAKS", res.data.results.trackmatches);
     });
   };
 
@@ -103,14 +111,18 @@ const mapState = state => {
   return {
     googleName: state.googleReducer.googleName,
     isAuth: state.googleReducer.isAuth,
-    searchValue: state.trackReducer.searchValue
+    searchValue: state.trackReducer.searchValue,
+    searchAlbums: state.searchReducer.searchAlbums
   };
 };
 
 const dispatch = {
   getGoogleName: getGoogleName,
   isGoogleAuth: isGoogleAuth,
-  setSearchValue: setSearchValue
+  setSearchValue: setSearchValue,
+  getSearchAlbums: getSearchAlbums,
+  getSearchArtist: getSearchArtist,
+  getSearchTracks: getSearchTracks
 };
 
 export default connect(mapState, dispatch)(HeaderComponent);

@@ -1,18 +1,19 @@
 .artist-container {
-  border: 2px solid #0c0246;
   height: auto;
 }
 .artist-container .artist-header {
   display: flex;
   flex-direction: row;
-  border: 1px dotted #46022f;
   height: 300px;
+  background: linear-gradient(90deg, rgba(65, 69, 78, 0), #033252 100%);
+  z-index: 0;
 }
 .artist-container .artist-header .artist-info {
   display: flex;
   flex-direction: column;
-  border: 1px solid #a10023;
   width: 75%;
+  z-index: 3;
+  background: linear-gradient(90deg, rgba(65, 69, 78, 0), #033252);
 }
 .artist-container .artist-header .artist-info .artist-name {
   font-size: 46px;
@@ -23,8 +24,7 @@
 }
 .artist-container .artist-header .artist-img {
   width: 300px;
-  border: 1px solid #0d4602;
 }
 .artist-container .artist-nav {
-  border: 1px solid #1b03a3;
+  border: 1px solid blue;
 }

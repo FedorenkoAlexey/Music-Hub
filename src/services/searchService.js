@@ -3,14 +3,14 @@ import axios from "axios";
 const BASE_URL = "http://ws.audioscrobbler.com/2.0/?method=";
 const API_KEY = "&api_key=32084b8c1570367216c6f6bf233d6455";
 const SEARCH_ARTIST = "artist.search&artist=";
-const SEARCH_ALBUM ="album.search&album=";
-const SEARCH_TRACK ="track.search&track=";
+const SEARCH_ALBUM = "album.search&album=";
+const SEARCH_TRACK = "track.search&track=";
 const JSON = "&format=json";
 
 export default class searchService {
   getSearchAlbums = album => {
     const result = axios.get(
-      `${BASE_URL}${SEARCH_ALBUM}${album}${API_KEY}${JSON}`
+      `${BASE_URL}${SEARCH_ALBUM}${album}${API_KEY}${JSON}&limit=20`
     );
     if (!result) {
       throw new Error("Error Search Albums request");
@@ -38,4 +38,3 @@ export default class searchService {
     return resArt;
   };
 }
-//ws.audioscrobbler.com/2.0/?method=track.search&track=Believe&api_key=YOUR_API_KEY&format=json

@@ -1,0 +1,55 @@
+.search-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(196, 196, 240);
+  border: blue 1px solid;
+
+  .search-res-text {
+    color: rgb(218, 105, 0);
+    font-size: 32px;
+    font-weight: 500;
+  }
+  .search-albums {
+    flex-flow: wrap;
+    display: flex;
+
+    .album-item {
+      // border: crimson 2px dotted;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 250px;
+      height: 250px;
+      margin: 10px 10px;
+      background-color: rgba(52, 52, 63, 0.822);
+      box-shadow: 0 1px rgba(255, 255, 255, 0.2) inset,
+        0 3px 5px rgba(0, 1, 6, 0.5), 0 0 1px 1px rgba(0, 1, 6, 0.2);
+      transition: 0.2s ease-in-out;
+
+      .album-img {
+        width: 174px;
+        height: 174px;
+        margin: 10px 0 0 38px;
+      }
+      .album-name {
+        font-weight: 600;
+        font-size: 18px;
+        color: rgb(0, 218, 207);
+      }
+      span {
+        color: #fff;
+
+        .artist-name {
+          color: rgb(218, 105, 0);
+          text-decoration: none;
+        }
+        .artist-name:hover {
+          text-decoration-line: underline;
+          color: rgb(252, 143, 0);
+        }
+      }
+    }
+  }
+}

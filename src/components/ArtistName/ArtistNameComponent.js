@@ -20,21 +20,17 @@ class ArtistNameComponent extends Component {
 
   componentDidMount() {
     const artistName = this.props.match.params.id || "";
-    console.log("artistName", artistName);
-    console.log("this.props.artistInfo", this.props.artistInfo);
-
-    // let image = "";
-    // let image =
-    //   "https://lastfm.freetls.fastly.net/i/u/300x300/71cc320aa75906f6e4760aaaeb96b845.png";
+    // console.log("artistName", artistName);
+    // console.log("this.props.artistInfo", this.props.artistInfo);
+    this.api.getArtist(artistName).then(res => {
+      this.props.getArtistInfo(res.data);
+    });
 
     this.api.getTopAlbums(artistName).then(result => {
       this.props.getTopAlbums(result.data.topalbums);
       this.setState({
         image: this.props.topAlbums.album[0].image[3]["#text"]
       });
-      // this.image = this.props.topAlbums.album[0].image[3]["#text"];
-      // console.log("ALBUMS: ", this.props.topAlbums.album[0].image[3]["#text"]);
-      // console.log("ALBUMS: ", this.props.topAlbums);
     });
   }
 
