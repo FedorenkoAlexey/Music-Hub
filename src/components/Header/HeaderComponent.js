@@ -47,8 +47,8 @@ class HeaderComponent extends Component {
     });
 
     this.apiSearch.getSearchTracks(params).then(res => {
-      console.log("SECOND", res.data.results.trackmatches);
-      // console.log("RES_SEARCH_TRAKS", res.data.results.trackmatches);
+      this.props.getSearchTracks(res.data.results.trackmatches);
+      console.log("RES_SEARCH_TRAKS", res.data.results.trackmatches);
     });
   };
 
@@ -112,7 +112,8 @@ const mapState = state => {
     googleName: state.googleReducer.googleName,
     isAuth: state.googleReducer.isAuth,
     searchValue: state.trackReducer.searchValue,
-    searchAlbums: state.searchReducer.searchAlbums
+    searchAlbums: state.searchReducer.searchAlbums,
+    searchTracks: state.searchReducer.searchTracks
   };
 };
 

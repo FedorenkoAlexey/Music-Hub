@@ -20,7 +20,7 @@ export default class searchService {
 
   getSearchTracks = track => {
     const result = axios.get(
-      `${BASE_URL}${SEARCH_TRACK}${track}${API_KEY}${JSON}`
+      `${BASE_URL}${SEARCH_TRACK}${track}${API_KEY}${JSON}&limit=10`
     );
     if (!result) {
       throw new Error("Error Search Traks request");

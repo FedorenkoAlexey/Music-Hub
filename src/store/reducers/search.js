@@ -7,6 +7,9 @@ const initState = {
   searchValueAll: "",
   searchAlbums: {
     album: []
+  },
+  searchTracks: {
+    track: []
   }
 };
 
@@ -17,11 +20,11 @@ export const searchReducer = (state = initState, action) => {
         ...state,
         searchValueAll: action.payload
       };
-    // case GET_SEARCH_TRACKS:
-    //   return {
-    //     ...state,
-    //     chartTracks: action.payload
-    //   };
+    case GET_SEARCH_TRACKS:
+      return {
+        ...state,
+        searchTracks: action.payload
+      };
     case GET_SEARCH_ALBUMS:
       return {
         ...state,
