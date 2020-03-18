@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { NavLink } from "react-router-dom";
 import "./albumstyles.css";
 
 import artistService from "../../services/artistService";
@@ -20,19 +21,15 @@ class ArtistAlbumsComponent extends Component {
         <ul className="search-albums">
           {album.map(album => (
             <li className="album-item" key={album.name}>
-              <div className="album-img">
-                <img src={album.image[2]["#text"]} alt={"album-img"} />
-              </div>
-              <span className="album-name">{album.name}</span>
-              {/* <span>
               <NavLink
-                className="artist-name"
-                activeClassName="active"
-                to={`/artist/${album.artist}/bio`}
+                className="text-link"
+                to={`/artist/${artist.name}/album/${album.name}`}
               >
-                {album.artist}
+                <div className="album-img">
+                  <img src={album.image[2]["#text"]} alt={"album-img"} />
+                </div>
+                <span className="album-name">{album.name}</span>
               </NavLink>
-            </span> */}
             </li>
           ))}
         </ul>

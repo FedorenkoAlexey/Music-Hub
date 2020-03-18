@@ -5,6 +5,7 @@ import { Route, Switch, NavLink } from "react-router-dom";
 import ArtistBioComponent from "../ArtistInfo/ArtistBioComponent";
 import ArtistTopTrackComponent from "../ArtistInfo/ArtistTopTrackComponent";
 import ArtistAlbumsComponent from "../ArtistInfo/ArtistAlbumsComponent";
+import TrackOfAlbumsComponent from "../ArtistInfo/TrackOfAlbumsComponent";
 import artistService from "../../services/artistService";
 
 import { getArtistInfo, getTopAlbums } from "../../store/actions/getTracks";
@@ -82,6 +83,10 @@ class ArtistNameComponent extends Component {
             component={ArtistTopTrackComponent}
           />
           <Route path="/artist/:id/albums" component={ArtistAlbumsComponent} />
+          <Route
+            path="/artist/:id/album/:id"
+            component={TrackOfAlbumsComponent}
+          />
         </Switch>
       </div>
     );

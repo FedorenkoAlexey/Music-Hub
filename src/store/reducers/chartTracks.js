@@ -3,6 +3,7 @@ import { GET_TOP_TRACKS } from "../actions/getTracks";
 import { GET_ARTIST_INFO } from "../actions/getTracks";
 import { GET_TOP_ALBUMS } from "../actions/getTracks";
 import { SET_SEARCH_VALUE } from "../actions/getTracks";
+import { GET_ALBUM_INFO } from "../actions/getTracks";
 
 const initState = {
   searchValue: "",
@@ -19,10 +20,6 @@ const initState = {
   },
   topTracks: {
     track: []
-    // {
-    //   name: [],
-    //   playcount: []
-    // }
   },
   topAlbums: {
     album: [
@@ -34,6 +31,18 @@ const initState = {
         ]
       }
     ]
+  },
+  albumInfo: {
+    album: {
+      image: [
+        {
+          text: []
+        }
+      ],
+      tracks: {
+        track: []
+      }
+    }
   }
 };
 
@@ -63,6 +72,11 @@ export const trackReducer = (state = initState, action) => {
       return {
         ...state,
         searchValue: action.payload
+      };
+    case GET_ALBUM_INFO:
+      return {
+        ...state,
+        albumInfo: action.payload
       };
   }
   return state;

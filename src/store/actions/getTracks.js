@@ -3,6 +3,7 @@ export const GET_TOP_TRACKS = "GET_TOP_TRACKS";
 export const GET_ARTIST_INFO = "GET_ARTIST_INFO";
 export const GET_TOP_ALBUMS = "GET_TOP_ALBUMS";
 export const SET_SEARCH_VALUE = "SET_SEARCH_VALUE";
+export const GET_ALBUM_INFO = "GET_ALBUM_INFO";
 
 export const getChartTracks = tracks => ({
   type: GET_CHART_TRACKS,
@@ -26,5 +27,10 @@ export const getTopAlbums = albums => ({
 
 export const setSearchValue = value => ({
   type: SET_SEARCH_VALUE,
+  payload: value
+});
+
+export const getAlbumInfo = value => ({
+  type: GET_ALBUM_INFO,
   payload: value
 });
