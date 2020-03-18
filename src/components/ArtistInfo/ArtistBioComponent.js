@@ -7,6 +7,13 @@ import { getArtistInfo } from "../../store/actions/getTracks";
 
 class ArtistBioComponent extends Component {
   api = new artistService();
+  constructor(props) {
+    super(props);
+    this.state = {
+      bio: ""
+    };
+  }
+
   componentDidMount() {
     const artistName = this.props.match.params.id || "";
 
@@ -21,18 +28,19 @@ class ArtistBioComponent extends Component {
       .then(bio => {
         let index = bio.indexOf("<a");
         let answ = bio.slice(0, index);
-        // console.log(answ);
+        this.setState({
+          bio: answ
+        });
       });
   }
   render() {
     const { artist } = this.props.artistInfo;
+    const { bio } = this.state;
     return (
       <div>
         Artist BIO_2 Component
         <p>{artist.name}</p>
-        <div className="art-info">
-          {artist ? <p>{artist.bio.content}</p> : <p>NO</p>}
-        </div>
+        <div className="art-info">{bio ? <p>{bio}</p> : <p></p>}</div>
       </div>
     );
   }

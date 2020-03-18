@@ -70,7 +70,7 @@ class SearchComponent extends Component {
                 <NavLink
                   className="artist-name"
                   activeClassName="active"
-                  to={`/artist/${album.artist}`}
+                  to={`/artist/${album.artist}/bio`}
                 >
                   {album.artist}
                 </NavLink>

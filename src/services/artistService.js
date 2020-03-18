@@ -10,7 +10,7 @@ const JSON = "&format=json";
 export default class artistService {
   getTopAlbums = artist => {
     const resTag = axios.get(
-      `${BASE_URL}${TOP_ALBUMS}${artist}${API_KEY}${JSON}`
+      `${BASE_URL}${TOP_ALBUMS}${artist}${API_KEY}${JSON}&limit=20`
     );
     if (!resTag) {
       throw new Error("Error Chart Tag request");

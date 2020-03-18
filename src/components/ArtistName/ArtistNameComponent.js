@@ -4,6 +4,7 @@ import { Route, Switch, NavLink } from "react-router-dom";
 
 import ArtistBioComponent from "../ArtistInfo/ArtistBioComponent";
 import ArtistTopTrackComponent from "../ArtistInfo/ArtistTopTrackComponent";
+import ArtistAlbumsComponent from "../ArtistInfo/ArtistAlbumsComponent";
 import artistService from "../../services/artistService";
 
 import { getArtistInfo, getTopAlbums } from "../../store/actions/getTracks";
@@ -66,12 +67,21 @@ class ArtistNameComponent extends Component {
         >
           TOP_TRACKS
         </NavLink>
+
+        <NavLink
+          to={`/artist/${artist.name}/albums`}
+          activeClassName="active"
+          className="text-link"
+        >
+          ALBUMS
+        </NavLink>
         <Switch>
           <Route path="/artist/:id/bio" component={ArtistBioComponent} />
           <Route
             path="/artist/:id/toptracks"
             component={ArtistTopTrackComponent}
           />
+          <Route path="/artist/:id/albums" component={ArtistAlbumsComponent} />
         </Switch>
       </div>
     );

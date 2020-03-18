@@ -30,9 +30,6 @@
   margin-right: 30px;
   width: 200px;
 }
-.wrapper .search {
-  border: 1px dotted salmon;
-}
 .wrapper .search input {
   width: 89%;
   height: 25px;
