@@ -30,7 +30,7 @@ export default class searchService {
 
   getSearchArtist = artist => {
     const resArt = axios.get(
-      `${BASE_URL}${SEARCH_ARTIST}${artist}${API_KEY}${JSON}`
+      `${BASE_URL}${SEARCH_ARTIST}${artist}${API_KEY}${JSON}&limit=10`
     );
     if (!resArt) {
       throw new Error("Error Search Artist Info request");

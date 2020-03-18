@@ -10,6 +10,9 @@ const initState = {
   },
   searchTracks: {
     track: []
+  },
+  searchArtists: {
+    artist: []
   }
 };
 
@@ -30,11 +33,11 @@ export const searchReducer = (state = initState, action) => {
         ...state,
         searchAlbums: action.payload
       };
-    // case GET_SEARCH_ARTIST:
-    //   return {
-    //     ...state,
-    //     artistInfo: action.payload
-    //   };
+    case GET_SEARCH_ARTIST:
+      return {
+        ...state,
+        searchArtists: action.payload
+      };
   }
   return state;
 };

@@ -38,18 +38,24 @@ class HeaderComponent extends Component {
   };
 
   onSearch = params => {
-    this.apiSearch.getSearchArtist(params).then(res => {
-      // console.log("RES_SEARCH_ARTIST", res.data.results.artistmatches);
-    });
+    if (params === "") {
+      console.log("Set search params");
+    } else {
+      this.apiSearch.getSearchArtist(params).then(res => {
+        this.props.getSearchArtist(res.data.results.artistmatches);
+        // console.log("RES_SEARCH_ARTIST", res.data.results.artistmatches);
+        console.log("Props_ARTIST", this.props);
+      });
 
-    this.apiSearch.getSearchAlbums(params).then(res => {
-      this.props.getSearchAlbums(res.data.results.albummatches);
-    });
+      this.apiSearch.getSearchAlbums(params).then(res => {
+        this.props.getSearchAlbums(res.data.results.albummatches);
+      });
 
-    this.apiSearch.getSearchTracks(params).then(res => {
-      this.props.getSearchTracks(res.data.results.trackmatches);
-      console.log("RES_SEARCH_TRAKS", res.data.results.trackmatches);
-    });
+      this.apiSearch.getSearchTracks(params).then(res => {
+        this.props.getSearchTracks(res.data.results.trackmatches);
+        // console.log("RES_SEARCH_TRAKS", res.data.results.trackmatches);
+      });
+    }
   };
 
   render() {
@@ -113,7 +119,8 @@ const mapState = state => {
     isAuth: state.googleReducer.isAuth,
     searchValue: state.trackReducer.searchValue,
     searchAlbums: state.searchReducer.searchAlbums,
-    searchTracks: state.searchReducer.searchTracks
+    searchTracks: state.searchReducer.searchTracks,
+    searchArtists: state.searchReducer.searchArtists
   };
 };
 

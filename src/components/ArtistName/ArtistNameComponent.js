@@ -39,7 +39,6 @@ class ArtistNameComponent extends Component {
     // const { album } = this.props.topAlbums;
     return (
       <div className="artist-container">
-        Artist Name Component
         <div className="artist-header">
           <div className="artist-info">
             <div className="artist-name">{artist.name}</div>

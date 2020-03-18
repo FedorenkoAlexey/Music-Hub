@@ -31,8 +31,29 @@ class SearchComponent extends Component {
   render() {
     const { album } = this.props.searchAlbums;
     const { track } = this.props.searchTracks;
+    const { artist } = this.props.searchArtists;
     return (
       <div className="search-container">
+        <div className="search-res-artist">Artists results</div>
+
+        <ul className="search-artist">
+          {artist.map(artist => (
+            <li className="artist-item" key={artist.mbid}>
+              {/* <div className="artist-name">{artist.name}</div> */}
+
+              <NavLink
+                className="artist-name"
+                activeClassName="active"
+                to={`/artist/${artist.name}`}
+              >
+                {artist.name}
+              </NavLink>
+
+              <div className="artist-listen">listeners: {artist.listeners}</div>
+            </li>
+          ))}
+        </ul>
+
         <div className="search-res-text">
           {/* Result search for {this.props.searchValue} */}
           Albums results
@@ -45,7 +66,7 @@ class SearchComponent extends Component {
                 <img src={album.image[2]["#text"]} alt={"album-img"} />
               </div>
               <span className="album-name">{album.name}</span>
-              <span key={album.mbid}>
+              <span>
                 <NavLink
                   className="artist-name"
                   activeClassName="active"
@@ -57,16 +78,12 @@ class SearchComponent extends Component {
             </li>
           ))}
         </ul>
-        <div className="search-res-text-track">
-          {/* Result search for {this.props.searchValue} */}
-          Tracks results
-        </div>
+        <div className="search-res-text-track">Tracks results</div>
         <ol className="search-tracks">
           {track.map(track => (
-            <li className="track-item" key={track.name}>
+            <li className="track-item" key={track.listeners}>
               <div className="track-block">
                 <div className="track-name">{track.name} </div>
-                {/* <div className="track-artist">{track.artist} */}
 
                 <NavLink
                   className="track-artist"
@@ -76,7 +93,6 @@ class SearchComponent extends Component {
                   {track.artist}
                 </NavLink>
 
-                {/* </div> */}
                 <div className="track-listen">
                   listeners: {track.listeners}{" "}
                 </div>
@@ -94,7 +110,8 @@ const mapState = (state, ownProps) => {
     artistInfo: state.trackReducer.artistInfo,
     searchValue: state.trackReducer.searchValue,
     searchAlbums: state.searchReducer.searchAlbums,
-    searchTracks: state.searchReducer.searchTracks
+    searchTracks: state.searchReducer.searchTracks,
+    searchArtists: state.searchReducer.searchArtists
   };
 };
 

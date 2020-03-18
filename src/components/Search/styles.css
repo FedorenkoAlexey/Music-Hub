@@ -5,6 +5,44 @@
   background-color: #c4c4f0;
   border: blue 1px solid;
 }
+.search-container .search-res-artist {
+  color: #000028;
+  margin: 25px 0 0 50px;
+  text-align: start;
+  font-size: 32px;
+  font-weight: 500;
+}
+.search-container .search-artist {
+  list-style-type: none;
+  background-color: #d3d3ec;
+}
+.search-container .search-artist .artist-item {
+  height: 55px;
+  display: flex;
+  align-items: center;
+  width: 1000px;
+  border-bottom: 0.5px solid #acb0c9;
+}
+.search-container .search-artist .artist-item .artist-name {
+  color: #000028;
+  text-align: start;
+  min-width: 600px;
+  font-size: 18px;
+  font-weight: 900;
+  margin-left: 50px;
+  text-decoration: none;
+}
+.search-container .search-artist .artist-item .artist-name:hover {
+  text-decoration-line: underline;
+  color: #a55000;
+}
+.search-container .search-artist .artist-item .artist-listen {
+  color: #ca4000;
+  font-style: italic;
+}
+.search-container .search-artist .artist-item:hover {
+  background-color: #cdcde6;
+}
 .search-container .search-res-text {
   color: #000028;
   margin: 25px 0 0 50px;

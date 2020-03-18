@@ -5,6 +5,51 @@
   background-color: rgb(196, 196, 240);
   border: blue 1px solid;
 
+  .search-res-artist {
+    color: rgb(0, 0, 40);
+    margin: 25px 0 0 50px;
+    text-align: start;
+    font-size: 32px;
+    font-weight: 500;
+  }
+
+  .search-artist {
+    list-style-type: none;
+    background-color: rgb(211, 211, 236);
+
+    .artist-item {
+      height: 55px;
+      display: flex;
+      align-items: center;
+      width: 1000px;
+
+      // justify-content: center;
+      // border: rgb(220, 20, 203) 1px solid;
+      border-bottom: 0.5px solid rgb(172, 176, 201);
+
+      .artist-name {
+        color: rgb(0, 0, 40);
+        text-align: start;
+        min-width: 600px;
+        font-size: 18px;
+        font-weight: 900;
+        margin-left: 50px;
+        text-decoration: none;
+      }
+      .artist-name:hover {
+        text-decoration-line: underline;
+        color: rgb(165, 80, 0);
+      }
+      .artist-listen {
+        color: rgb(202, 64, 0);
+        font-style: italic;
+      }
+    }
+    .artist-item:hover {
+      background-color: rgb(205, 205, 230);
+    }
+  }
+
   .search-res-text {
     // color: rgb(190, 108, 0);
     color: rgb(0, 0, 40);
