@@ -22,11 +22,10 @@ class ArtistNameComponent extends Component {
 
   componentDidMount() {
     const artistName = this.props.match.params.id || "";
-    // console.log("artistName", artistName);
-    // console.log("this.props.artistInfo", this.props.artistInfo);
     this.api.getArtist(artistName).then(res => {
       this.props.getArtistInfo(res.data);
     });
+    console.log("Start ArtNameComp", artistName);
 
     this.api.getTopAlbums(artistName).then(result => {
       this.props.getTopAlbums(result.data.topalbums);
@@ -56,10 +55,37 @@ class ArtistNameComponent extends Component {
           // }}
         >
           <div className="artist-info">
-            <div className="artist-name">{artist.name}</div>
-            <div className="artist-listen">
-              <p>Listeners: {artist.stats.listeners}</p>
-              <p>Playcount: {artist.stats.playcount}</p>
+            <div className="wrap-info">
+              <div className="artist-name">{artist.name}</div>
+              <div className="artist-listen">
+                <p>Listeners: {artist.stats.listeners}</p>
+                <p>Playcount: {artist.stats.playcount}</p>
+              </div>
+            </div>
+
+            <div className="artist-nav">
+              <NavLink
+                to={`/artist/${artist.name}/bio`}
+                activeClassName="active"
+                className="text-link"
+              >
+                BIO
+              </NavLink>
+              <NavLink
+                to={`/artist/${artist.name}/toptracks`}
+                activeClassName="active"
+                className="text-link"
+              >
+                TOP TRACKS
+              </NavLink>
+
+              <NavLink
+                to={`/artist/${artist.name}/albums`}
+                activeClassName="active"
+                className="text-link"
+              >
+                ALBUMS
+              </NavLink>
             </div>
           </div>
           <div
@@ -77,29 +103,7 @@ class ArtistNameComponent extends Component {
             {/* <img src={this.state.image} alt={artist.name} /> */}
           </div>
         </div>
-        <div className="artist-nav"></div>
-        <NavLink
-          to={`/artist/${artist.name}/bio`}
-          activeClassName="active"
-          className="text-link"
-        >
-          BIO
-        </NavLink>
-        <NavLink
-          to={`/artist/${artist.name}/toptracks`}
-          activeClassName="active"
-          className="text-link"
-        >
-          TOP_TRACKS
-        </NavLink>
 
-        <NavLink
-          to={`/artist/${artist.name}/albums`}
-          activeClassName="active"
-          className="text-link"
-        >
-          ALBUMS
-        </NavLink>
         <Switch>
           <Route path="/artist/:id/bio" component={ArtistBioComponent} />
           <Route

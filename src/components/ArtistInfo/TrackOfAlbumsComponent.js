@@ -17,6 +17,7 @@ class TrackOfAlbumsComponent extends Component {
   componentDidMount() {
     const albumName = this.props.match.params.id || "";
     const artistName = this.props.artistInfo.artist.name;
+    console.log("PROPS_TRACK_ALBUMS: ", this.props);
 
     this.api.getAlbumTrack(artistName, albumName).then(res => {
       this.props.getAlbumInfo(res.data);
@@ -33,12 +34,9 @@ class TrackOfAlbumsComponent extends Component {
   render() {
     const { artist } = this.props.artistInfo;
     const { album } = this.props.albumInfo;
-    // const { track } = album.tracks.track;
     const { track } = this.props.albumInfo.album.tracks;
     return (
       <div className="album-wrap">
-        {/* {album.name}Tracks: */}
-        {/* <button onClick={this.click}>!!!!!!!!</button> */}
         <div className="album-head">
           <div className="album-cover">
             <img src={this.state.image} alt={"album-img"} />

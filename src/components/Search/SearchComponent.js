@@ -5,13 +5,13 @@ import {
   NavLink
 } from "react-router-dom";
 // import { Route, Switch, NavLink } from "react-router-dom";
-import apiService from "../../services/apiService";
+import artistService from "../../services/artistService";
 import "./styles.css";
 
 import { getArtistInfo } from "../../store/actions/getTracks";
 
 class SearchComponent extends Component {
-  apiService = new apiService();
+  api = new artistService();
 
   // constructor(props) {
   //   super(props);
@@ -26,6 +26,12 @@ class SearchComponent extends Component {
 
   click = () => {
     console.log("search-click ", this.props);
+  };
+  artInfo = artistName => {
+    console.log("name", artistName);
+    this.api.getArtist(artistName).then(res => {
+      this.props.getArtistInfo(res.data);
+    });
   };
 
   render() {
@@ -55,9 +61,8 @@ class SearchComponent extends Component {
         </ul>
 
         <div className="search-res-text">
-          {/* Result search for {this.props.searchValue} */}
           Albums results
-          <button onClick={() => this.click()}>!!!!!!</button>
+          {/* <button onClick={() => this.click()}>!!!!!!</button> */}
         </div>
         <ul className="search-albums">
           {album.map(album => (
@@ -65,7 +70,16 @@ class SearchComponent extends Component {
               <div className="album-img">
                 <img src={album.image[2]["#text"]} alt={"album-img"} />
               </div>
-              <span className="album-name">{album.name}</span>
+              <span className="album-name">
+                {/* <NavLink
+                  onClick={() => this.artInfo(album.artist)}
+                  className="album-name"
+                  activeClassName="active"
+                  to={`/artist/${album.artist}/album/${album.name}`}
+                > */}
+                {album.name}
+                {/* </NavLink> */}
+              </span>
               <span>
                 <NavLink
                   className="artist-name"

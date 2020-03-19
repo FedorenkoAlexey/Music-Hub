@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { InputText } from "primereact/inputtext";
+import { Button } from "primereact/button";
 import googleService from "../../services/googleService";
 import searchService from "../../services/searchService";
 import { getGoogleName, isGoogleAuth } from "../../store/actions/googleAuth";
@@ -11,6 +13,10 @@ import {
 } from "../../store/actions/search";
 import { setSearchValue } from "../../store/actions/getTracks";
 import cookie from "react-cookies";
+
+import "primereact/resources/themes/nova-light/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
 import "./styles.css";
 
 class HeaderComponent extends Component {
@@ -102,9 +108,14 @@ class HeaderComponent extends Component {
             value={searchValue}
             onChange={this.onSearchHandle}
           />
-          {/* <button onClick={this.onSearch}>Search</button> */}
+          {/* <InputText
+            type="text"
+            value={searchValue}
+            onChange={this.onSearchHandle}
+          /> */}
           <NavLink
             activeClassName="active"
+            className="pi pi-search"
             to={`/search/${searchValue}`}
             onClick={() => this.onSearch(searchValue)}
           >
