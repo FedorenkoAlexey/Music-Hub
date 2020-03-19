@@ -30,9 +30,12 @@ class ArtistNameComponent extends Component {
 
     this.api.getTopAlbums(artistName).then(result => {
       this.props.getTopAlbums(result.data.topalbums);
-      this.setState({
-        image: this.props.topAlbums.album[0].image[3]["#text"]
-      });
+      const apiImage = this.props.topAlbums.album[0].image[3]["#text"];
+      apiImage
+        ? this.setState({
+            image: apiImage
+          })
+        : console.log("No artist image");
     });
   }
 
@@ -41,7 +44,17 @@ class ArtistNameComponent extends Component {
     // const { album } = this.props.topAlbums;
     return (
       <div className="artist-container">
-        <div className="artist-header">
+        <div
+          className="artist-header"
+          // style={{
+          //   background: `linear-gradient(
+          //     90deg,
+          //     rgba(65, 69, 78, 0),
+          //     rgb(3, 50, 82) 100%
+          //   )`,
+          //   zIndex: "2"
+          // }}
+        >
           <div className="artist-info">
             <div className="artist-name">{artist.name}</div>
             <div className="artist-listen">
@@ -49,8 +62,19 @@ class ArtistNameComponent extends Component {
               <p>Playcount: {artist.stats.playcount}</p>
             </div>
           </div>
-          <div className="artist-img">
-            <img src={this.state.image} alt={artist.name} />
+          <div
+            className="artist-img"
+            style={{
+              backgroundImage: ` 
+               linear-gradient(
+                -90deg,
+                rgba(65, 69, 78, 0),
+                rgb(3, 50, 82) 100%
+              ), 
+              url(${this.state.image} )`
+            }}
+          >
+            {/* <img src={this.state.image} alt={artist.name} /> */}
           </div>
         </div>
         <div className="artist-nav"></div>

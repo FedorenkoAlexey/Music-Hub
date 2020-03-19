@@ -20,7 +20,7 @@ class ChartTrackComponent extends Component {
 
   componentDidMount() {
     this.apiService.getTopChartTracks().then(res => {
-      // console.log(res);
+      console.log("RES_CHART", res.data);
       this.props.getChartTracks(res.data);
     });
   }

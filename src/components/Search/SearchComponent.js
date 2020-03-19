@@ -38,7 +38,7 @@ class SearchComponent extends Component {
 
         <ul className="search-artist">
           {artist.map(artist => (
-            <li className="artist-item" key={artist.mbid}>
+            <li className="artist-item" key={artist.url + artist.listeners}>
               {/* <div className="artist-name">{artist.name}</div> */}
 
               <NavLink
@@ -61,7 +61,7 @@ class SearchComponent extends Component {
         </div>
         <ul className="search-albums">
           {album.map(album => (
-            <li className="album-item" key={album.name}>
+            <li className="album-item" key={album.name + album.url}>
               <div className="album-img">
                 <img src={album.image[2]["#text"]} alt={"album-img"} />
               </div>
@@ -81,7 +81,7 @@ class SearchComponent extends Component {
         <div className="search-res-text-track">Tracks results</div>
         <ol className="search-tracks">
           {track.map(track => (
-            <li className="track-item" key={track.listeners}>
+            <li className="track-item" key={track.listeners + track.name}>
               <div className="track-block">
                 <div className="track-name">{track.name} </div>
 
@@ -93,9 +93,7 @@ class SearchComponent extends Component {
                   {track.artist}
                 </NavLink>
 
-                <div className="track-listen">
-                  listeners: {track.listeners}{" "}
-                </div>
+                <div className="track-listen">listeners: {track.listeners}</div>
               </div>
             </li>
           ))}

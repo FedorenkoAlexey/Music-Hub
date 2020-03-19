@@ -41,7 +41,8 @@ const initState = {
       ],
       tracks: {
         track: []
-      }
+      },
+      wiki: []
     }
   }
 };

@@ -43,18 +43,21 @@ class HeaderComponent extends Component {
     } else {
       this.apiSearch.getSearchArtist(params).then(res => {
         this.props.getSearchArtist(res.data.results.artistmatches);
-        // console.log("RES_SEARCH_ARTIST", res.data.results.artistmatches);
+        console.log("RES_SEARCH_ARTIST", res.data.results.artistmatches);
         console.log("Props_ARTIST", this.props);
       });
 
       this.apiSearch.getSearchAlbums(params).then(res => {
         this.props.getSearchAlbums(res.data.results.albummatches);
+        console.log("RES_SEARCH_Albums", res.data.results.albummatches);
       });
 
       this.apiSearch.getSearchTracks(params).then(res => {
         this.props.getSearchTracks(res.data.results.trackmatches);
-        // console.log("RES_SEARCH_TRAKS", res.data.results.trackmatches);
+        console.log("RES_SEARCH_TRAKS", res.data.results.trackmatches);
       });
+
+      this.props.setSearchValue("");
     }
   };
 
