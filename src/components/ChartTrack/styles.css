@@ -1,10 +1,112 @@
 .chart-container {
-  border: 2px solid #0c0246;
+  border-bottom: 1px solid #d3d3ec;
+  background-color: #d3d3ec;
   height: auto;
 }
 .chart-container .nav-chart {
   display: flex;
+  flex-flow: wrap;
   flex-direction: row;
   justify-content: space-around;
-  border: 2px solid #850000;
+  background-color: #7e95c0;
+}
+.chart-container .nav-chart .div-tag {
+  width: 200px;
+  height: 200px;
+  margin: 20px 20px;
+}
+.chart-container .nav-chart .div-tag img {
+  margin-top: 12px;
+}
+.chart-container .nav-chart .active {
+  width: 200px;
+  height: 200px;
+  margin: 20px 20px;
+  transform: scale(1.03);
+  box-shadow: 5px 5px 15px #d3d3ec, -5px -5px 15px #d3d3ec;
+}
+.chart-container .nav-chart .active img {
+  margin-top: 12px;
+}
+.chart-container .nav-chart .div-tag:hover {
+  color: #2b3547;
+  background-color: #7495d1;
+  transform: scale(1.03);
+  box-shadow: 0 0 12px #000000;
+}
+.chart-container .hits {
+  color: #00006b;
+  font-size: 20px;
+  margin: 10px 0 0 90px;
+  font-weight: 900;
+  text-align: left;
+}
+.chart-container .hits .dropdown {
+  margin-left: 20px;
+  border: none;
+  border-bottom: 2px solid #0084ff;
+}
+.chart-container .chart-tracks {
+  background-color: #d3d3ec;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  list-style-type: none;
+}
+.chart-container .chart-tracks .track-item {
+  height: 55px;
+  display: flex;
+  align-items: center;
+  width: 1200px;
+  border-bottom: 0.5px solid #acb0c9;
+}
+.chart-container .chart-tracks .track-item .track-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  margin-left: 50px;
+}
+.chart-container .chart-tracks .track-item .track-block .track-name {
+  color: #000028;
+  text-align: start;
+  min-width: 550px;
+  font-size: 18px;
+  font-weight: 900;
+}
+.chart-container .chart-tracks .track-item .track-block .track-artist {
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+  text-align: start;
+  min-width: 350px;
+}
+.chart-container .chart-tracks .track-item .track-block .track-artist:hover {
+  text-decoration-line: underline;
+}
+.chart-container .chart-tracks .track-item .track-block .track-duration {
+  color: #ca4000;
+  font-style: italic;
+}
+.chart-container .chart-tracks .track-item:hover {
+  background-color: #cdcde6;
+}
+.chart-container .number-pages {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  list-style-type: none;
+}
+.chart-container .number-pages .li-number {
+  font-weight: 700;
+  margin: 0 20px;
+}
+.chart-container .number-pages .li-number .number {
+  color: #0c0246;
+}
+.chart-container .number-pages .li-number .active {
+  color: white;
+  background-color: #ff6800;
+  border-radius: 50%;
+  padding: 6px 12px;
+  margin: 0 -12px;
 }

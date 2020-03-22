@@ -7,9 +7,10 @@ const CHART_TEG = "tag.gettoptracks&tag=";
 const JSON = "&format=json";
 
 export default class apiService {
-  getTopChartTracks = HITS => {
+  getTopChartTracks = (HITS, PAGE) => {
+    console.log("API", HITS, PAGE);
     const resChart = axios.get(
-      `${BASE_URL}${Chart_Top_Track}${API_KEY}${JSON}&limit=${HITS}&page=1`
+      `${BASE_URL}${Chart_Top_Track}${API_KEY}${JSON}&limit=${HITS}&page=${PAGE}`
     );
 
     if (!resChart) {
@@ -18,9 +19,10 @@ export default class apiService {
     return resChart;
   };
 
-  getTagChartTracks = (tag, HITS) => {
+  getTagChartTracks = (tag, HITS, PAGE) => {
+    console.log("API", tag, HITS, PAGE);
     const resTag = axios.get(
-      `${BASE_URL}${CHART_TEG}${tag}${API_KEY}${JSON}&limit=${HITS}&page=1`
+      `${BASE_URL}${CHART_TEG}${tag}${API_KEY}${JSON}&limit=${HITS}&page=${PAGE}`
     );
     if (!resTag) {
       throw new Error("Error Chart Tag request");

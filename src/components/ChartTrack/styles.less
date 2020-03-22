@@ -1,11 +1,141 @@
 .chart-container {
-  border: 2px solid #0c0246;
+  border-bottom: 1px solid rgb(211, 211, 236);
+  background-color: rgb(211, 211, 236);
   height: auto;
 
   .nav-chart {
     display: flex;
+    flex-flow: wrap;
     flex-direction: row;
     justify-content: space-around;
-    border: 2px solid #850000;
+    background-color: #7e95c0;
+    // border: 2px solid #850000;
+
+    .div-tag {
+      width: 200px;
+      height: 200px;
+      margin: 20px 20px;
+      // box-shadow: 0 0 12px rgb(0, 0, 0);
+      // border: 1px solid #ff6800;
+
+      img {
+        margin-top: 12px;
+      }
+    }
+
+    .active {
+      width: 200px;
+      height: 200px;
+      margin: 20px 20px;
+      transform: scale(1.03);
+      // box-shadow: 5px 5px 25px rgb(255, 110, 0), -5px -5px 25px rgb(255, 110, 0);
+      box-shadow: 5px 5px 15px rgb(211, 211, 236),
+        -5px -5px 15px rgb(211, 211, 236);
+
+      img {
+        margin-top: 12px;
+      }
+    }
+
+    .div-tag:hover {
+      color: #2b3547;
+      background-color: #7495d1;
+      transform: scale(1.03);
+      box-shadow: 0 0 12px rgb(0, 0, 0);
+    }
+  }
+  .hits {
+    color: rgb(0, 0, 107);
+    font-size: 20px;
+    margin: 10px 0 0 90px;
+    font-weight: 900;
+    text-align: left;
+    // border: 1px solid green;
+
+    .dropdown {
+      margin-left: 20px;
+      border: none;
+      border-bottom: 2px solid #0084ff;
+      // background-color: rgb(153, 74, 74);
+    }
+  }
+
+  .chart-tracks {
+    background-color: rgb(211, 211, 236);
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    list-style-type: none;
+
+    .track-item {
+      height: 55px;
+      display: flex;
+      align-items: center;
+      width: 1200px;
+      border-bottom: 0.5px solid rgb(172, 176, 201);
+
+      .track-block {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        margin-left: 50px;
+
+        .track-name {
+          // border: rgb(37, 220, 20) 1px solid;
+          color: rgb(0, 0, 40);
+          text-align: start;
+          min-width: 550px;
+          font-size: 18px;
+          font-weight: 900;
+        }
+        .track-artist {
+          // border: rgb(20, 220, 137) 1px solid;
+          // color: rgb(218, 105, 0);
+          // font-weight: 500;
+          text-decoration: none;
+          color: black;
+          font-size: 16px;
+          text-align: start;
+          min-width: 350px;
+        }
+        .track-artist:hover {
+          text-decoration-line: underline;
+        }
+        .track-duration {
+          color: rgb(202, 64, 0);
+          font-style: italic;
+        }
+      }
+    }
+    .track-item:hover {
+      background-color: rgb(205, 205, 230);
+    }
+  }
+
+  .number-pages {
+    display: flex;
+    // justify-content: space-around;
+    justify-content: center;
+
+    flex-direction: row;
+    list-style-type: none;
+
+    .li-number {
+      font-weight: 700;
+      margin: 0 20px;
+
+      .number {
+        color: #0c0246;
+      }
+
+      .active {
+        color: white;
+        background-color: #ff6800;
+        border-radius: 50%;
+        // border: #850000 1px solid;
+        padding: 6px 12px;
+        margin: 0 -12px;
+      }
+    }
   }
 }
