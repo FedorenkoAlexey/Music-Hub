@@ -35,7 +35,7 @@
 }
 .search-container .search-artist .artist-item .artist-name:hover {
   text-decoration-line: underline;
-  color: #a55000;
+  color: #ff6e00;
 }
 .search-container .search-artist .artist-item .artist-listen {
   color: #ca4000;
@@ -82,12 +82,12 @@
   color: #fff;
 }
 .search-container .search-albums .album-item span .artist-name {
-  color: #da6900;
+  color: #ff6800;
   text-decoration: none;
 }
 .search-container .search-albums .album-item span .artist-name:hover {
   text-decoration-line: underline;
-  color: #fc8f00;
+  color: #ff6800;
 }
 .search-container .search-res-text-track {
   color: #000028;
@@ -107,7 +107,7 @@
   height: 55px;
   display: flex;
   align-items: center;
-  width: 1000px;
+  width: 1200px;
   border-bottom: 0.5px solid #acb0c9;
 }
 .search-container .search-tracks .track-item .track-block {
@@ -119,7 +119,7 @@
 .search-container .search-tracks .track-item .track-block .track-name {
   color: #000028;
   text-align: start;
-  min-width: 380px;
+  min-width: 550px;
   font-size: 18px;
   font-weight: 900;
 }
@@ -128,7 +128,7 @@
   color: black;
   font-size: 16px;
   text-align: start;
-  min-width: 250px;
+  min-width: 350px;
 }
 .search-container .search-tracks .track-item .track-block .track-artist:hover {
   text-decoration-line: underline;

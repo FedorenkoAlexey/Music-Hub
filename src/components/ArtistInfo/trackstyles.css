@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  background-color: #d3d3ec;
 }
 .album-wrap .album-head {
   display: flex;
@@ -49,28 +50,21 @@
   height: 50px;
   display: flex;
   align-items: center;
-  width: 1000px;
+  width: 1400px;
   border-bottom: 0.5px solid #acb0c9;
 }
 .album-wrap .album-track .track-item .track-block {
   display: flex;
-  flex-direction: row;
+  flex-flow: wrap;
   justify-content: start;
   margin-left: 50px;
 }
 .album-wrap .album-track .track-item .track-block .track-name {
   color: #000028;
   text-align: start;
-  min-width: 380px;
+  width: 750px;
   font-size: 18px;
   font-weight: 900;
-}
-.album-wrap .album-track .track-item .track-block .track-artist {
-  text-decoration: none;
-  color: black;
-  font-size: 16px;
-  text-align: start;
-  min-width: 250px;
 }
 .album-wrap .album-track .track-item .track-block .track-artist:hover {
   text-decoration-line: underline;

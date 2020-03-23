@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  background-color: rgb(211, 211, 236);
+  // border: blue 2px solid;
 
   .album-head {
     display: flex;
@@ -46,9 +48,9 @@
         // margin-left: -100px;
         // border: red 1px solid;
       }
-      .play {
-        // margin-left: -85px;
-      }
+      // .play {
+      //   margin-left: -85px;
+      // }
     }
   }
   .album-track {
@@ -63,12 +65,13 @@
       height: 50px;
       display: flex;
       align-items: center;
-      width: 1000px;
+      width: 1400px;
       border-bottom: 0.5px solid rgb(172, 176, 201);
 
       .track-block {
         display: flex;
-        flex-direction: row;
+        // flex-direction: row;
+        flex-flow: wrap;
         justify-content: start;
         margin-left: 50px;
 
@@ -76,20 +79,20 @@
           // border: rgb(37, 220, 20) 1px solid;
           color: rgb(0, 0, 40);
           text-align: start;
-          min-width: 380px;
+          width: 750px;
           font-size: 18px;
           font-weight: 900;
         }
-        .track-artist {
-          // border: rgb(20, 220, 137) 1px solid;
-          // color: rgb(218, 105, 0);
-          // font-weight: 500;
-          text-decoration: none;
-          color: black;
-          font-size: 16px;
-          text-align: start;
-          min-width: 250px;
-        }
+        // .track-artist {
+        //   // border: rgb(20, 220, 137) 1px solid;
+        //   // color: rgb(218, 105, 0);
+        //   // font-weight: 500;
+        //   text-decoration: none;
+        //   color: black;
+        //   font-size: 16px;
+        //   text-align: start;
+        //   min-width: 250px;
+        // }
         .track-artist:hover {
           text-decoration-line: underline;
         }

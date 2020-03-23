@@ -1,16 +1,22 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-// import { getArtistInfo } from "../../store/actions/getTracks";
-
+import { ScrollPanel } from "primereact/scrollpanel";
+import { ProgressSpinner } from "primereact/progressspinner";
 import artistService from "../../services/artistService";
 import { getArtistInfo } from "../../store/actions/getTracks";
+
+import "primereact/resources/themes/nova-light/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
+import "./biostyles.css";
 
 class ArtistBioComponent extends Component {
   api = new artistService();
   constructor(props) {
     super(props);
     this.state = {
-      bio: ""
+      bio: "",
+      err: "spinner"
     };
   }
 
@@ -28,19 +34,36 @@ class ArtistBioComponent extends Component {
       .then(bio => {
         let index = bio.indexOf("<a");
         let answ = bio.slice(0, index);
-        this.setState({
-          bio: answ
-        });
+
+        setTimeout(() => {
+          this.setState({
+            bio: answ,
+            err: "err"
+          });
+        }, 300);
       });
   }
   render() {
     const { artist } = this.props.artistInfo;
     const { bio } = this.state;
     return (
-      <div>
-        Artist BIO_2 Component
-        <p>{artist.name}</p>
-        <div className="art-info">{bio ? <p>{bio}</p> : <p></p>}</div>
+      <div className="bio-wrap">
+        {bio ? (
+          <ScrollPanel className="custom" style={{ fontSize: "20px" }}>
+            <p>{bio}</p>
+          </ScrollPanel>
+        ) : this.state.err === "spinner" ? (
+          <ProgressSpinner
+            className="spinner"
+            strokeWidth="7"
+            fill="#7e95c0"
+            animationDuration=".5s"
+          />
+        ) : (
+          <p className="err">No biography of this artist found</p>
+        )}
+
+        {/* <div className="art-info">{bio ? <p>{bio}</p> : <p></p>}</div> */}
       </div>
     );
   }
