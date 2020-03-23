@@ -1,0 +1,43 @@
+@media only screen and (max-width: 930px) {
+  .chart-container .chart-tracks .track-item .track-block .track-name {
+    border: #25dc14 1px solid;
+    color: #000028;
+    text-align: start;
+    min-width: 300px;
+    font-size: 18px;
+    font-weight: 900;
+  }
+  .chart-container .chart-tracks .track-item .track-block .track-artist {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    text-align: start;
+    min-width: 150px;
+    flex-grow: 1;
+  }
+
+  .chart-container .chart-tracks .track-item .track-block .track-duration {
+    color: #ca4000;
+    font-style: italic;
+    flex-grow: 1;
+  }
+
+  .chart-container .number-pages {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    list-style-type: none;
+  }
+  .chart-container .number-pages .li-number {
+    /* font-weight: 400; */
+    margin: 0 10px;
+  }
+  .chart-container .number-pages .li-number .number {
+    color: #0c0246;
+  }
+  .chart-container .number-pages .li-number .active {
+    color: #ff6800;
+    background-color: #d3d3ec;
+    margin: 0 -12px;
+  }
+}

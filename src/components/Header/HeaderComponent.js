@@ -29,15 +29,6 @@ class HeaderComponent extends Component {
     console.log("NAME", this.props.googleName, "TOKEN", token);
   }
 
-  onSignOut = () => {
-    console.log("LOG OUT");
-    this.apiGoogle.signOut().then(() => {
-      this.props.getGoogleName(null);
-      this.props.isGoogleAuth(false);
-      cookie.remove("token", { path: "/" });
-    });
-  };
-
   onSearchHandle = e => {
     let search = e.target.value;
     this.props.setSearchValue(search);
@@ -76,7 +67,7 @@ class HeaderComponent extends Component {
           <div className="header-nav">
             {this.props.isAuth ? (
               <span className="navlink">
-                <NavLink to="/" activeClassName="active" className="text-link">
+                <NavLink to="/home" activeClassName="active" className="text-link">
                   Home
                 </NavLink>
                 <NavLink
@@ -95,9 +86,6 @@ class HeaderComponent extends Component {
             {isAuth && (
               <div>
                 <p className="welcome">Welcome</p> {googleName}
-                <p>
-                  <button onClick={this.onSignOut}>Sign Out</button>
-                </p>
               </div>
             )}
           </div>
@@ -108,11 +96,6 @@ class HeaderComponent extends Component {
             value={searchValue}
             onChange={this.onSearchHandle}
           />
-          {/* <InputText
-            type="text"
-            value={searchValue}
-            onChange={this.onSearchHandle}
-          /> */}
           <NavLink
             activeClassName="active"
             className="pi pi-search"

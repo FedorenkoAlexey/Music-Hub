@@ -23,6 +23,7 @@ import "primereact/resources/themes/nova-light/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import "./styles.css";
+import "./media.css";
 
 class ChartTrackComponent extends Component {
   apiService = new apiService();

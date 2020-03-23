@@ -20,11 +20,12 @@
   margin-top: 5px;
   display: flex;
   align-items: center;
-  width: 1400px;
   border-bottom: 0.5px solid #acb0c9;
 }
 .toptrack-wrap .top-track .track-item .track-block {
   display: flex;
+  flex-direction: row;
+  width: 90%;
   flex-flow: wrap;
   justify-content: start;
   margin-left: 50px;
@@ -32,13 +33,14 @@
 .toptrack-wrap .top-track .track-item .track-block .track-name {
   color: #000028;
   text-align: start;
-  width: 750px;
+  flex-grow: 20;
   font-size: 18px;
   font-weight: 900;
 }
 .toptrack-wrap .top-track .track-item .track-block .track-listen {
   color: #ca4000;
   font-style: italic;
+  flex-grow: 1;
   margin-left: 200px;
 }
 .toptrack-wrap .top-track .track-item:hover {

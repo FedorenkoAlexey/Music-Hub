@@ -57,7 +57,6 @@
   height: 55px;
   display: flex;
   align-items: center;
-  width: 1200px;
   border-bottom: 0.5px solid #acb0c9;
 }
 .chart-container .chart-tracks .track-item .track-block {
@@ -65,11 +64,13 @@
   flex-direction: row;
   justify-content: start;
   margin-left: 50px;
+  width: 90%;
 }
 .chart-container .chart-tracks .track-item .track-block .track-name {
+  border: #25dc14 1px solid;
   color: #000028;
   text-align: start;
-  min-width: 550px;
+  min-width: 500px;
   font-size: 18px;
   font-weight: 900;
 }
@@ -78,7 +79,8 @@
   color: black;
   font-size: 16px;
   text-align: start;
-  min-width: 350px;
+  min-width: 200px;
+  flex-grow: 1;
 }
 .chart-container .chart-tracks .track-item .track-block .track-artist:hover {
   text-decoration-line: underline;
@@ -86,6 +88,7 @@
 .chart-container .chart-tracks .track-item .track-block .track-duration {
   color: #ca4000;
   font-style: italic;
+  flex-grow: 1;
 }
 .chart-container .chart-tracks .track-item:hover {
   background-color: #cdcde6;

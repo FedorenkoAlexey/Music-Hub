@@ -20,13 +20,15 @@
       margin-top: 5px;
       display: flex;
       align-items: center;
-      width: 1400px;
+      // width: 1400px;
       border-bottom: 0.5px solid rgb(172, 176, 201);
 
       .track-block {
         display: flex;
-        // flex-direction: row;
+        flex-direction: row;
+        width: 90%;
         flex-flow: wrap;
+
         justify-content: start;
         margin-left: 50px;
 
@@ -34,13 +36,15 @@
           // border: rgb(37, 220, 20) 1px solid;
           color: rgb(0, 0, 40);
           text-align: start;
-          width: 750px;
+          // width: 750px;
+          flex-grow: 20;
           font-size: 18px;
           font-weight: 900;
         }
         .track-listen {
           color: rgb(202, 64, 0);
           font-style: italic;
+          flex-grow: 1;
           margin-left: 200px;
         }
       }

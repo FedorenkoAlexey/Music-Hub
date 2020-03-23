@@ -10,6 +10,7 @@ import artistService from "../../services/artistService";
 
 import { getArtistInfo, getTopAlbums } from "../../store/actions/getTracks";
 import "./styles.css";
+import "./media.css";
 
 class ArtistNameComponent extends Component {
   api = new artistService();

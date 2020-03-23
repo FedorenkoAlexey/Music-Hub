@@ -19,11 +19,11 @@ class Routes extends PureComponent {
         <BrowserRouter>
           <HeaderComponent />
           <Switch>
-            <Route exact path="/" component={HomeComponent} />
+            <Route exact path="/home" component={HomeComponent} />
             {this.props.isAuth ? (
               <Route path="/chart" component={ChartTrackComponent} />
             ) : (
-              <Redirect from="/" to="/" />
+              <Redirect from="/" to="/home" />
             )}
             <Route path="/artist/:id" component={ArtistNameComponent} />
             <Route path="/search/:id" component={SearchComponent} />

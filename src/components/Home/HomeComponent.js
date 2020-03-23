@@ -25,12 +25,23 @@ class HomeComponent extends Component {
     });
   };
 
+  onSignOut = () => {
+    console.log("LOG OUT");
+    this.apiGoogle.signOut().then(() => {
+      this.props.getGoogleName(null);
+      this.props.isGoogleAuth(false);
+      cookie.remove("token", { path: "/" });
+    });
+  };
+
   render() {
+    const { isAuth } = this.props;
     return (
       <div>
         Home Component
         <div>
-          <button onClick={this.onSignIn}>Sing In</button>
+          {!isAuth && <button onClick={this.onSignIn}>Sing In</button>}
+          {isAuth && <button onClick={this.onSignOut}>Sing Out</button>}
         </div>
       </div>
     );
