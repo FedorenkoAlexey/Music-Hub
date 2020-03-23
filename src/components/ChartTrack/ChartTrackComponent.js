@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Route, Switch, NavLink } from "react-router-dom";
 import { Dropdown } from "primereact/dropdown";
@@ -120,61 +120,61 @@ class ChartTrackComponent extends Component {
       <div className="chart-container">
         <div className="nav-chart">
           <div
-            className={this.state.tag == "rock" ? "active" : "div-tag"}
+            className={this.state.tag === "rock" ? "active" : "div-tag"}
             onClick={() => this.getTagChart("rock")}
           >
             <img src={rock} alt={"rock"} />
           </div>
           <div
-            className={this.state.tag == "hip-hop" ? "active" : "div-tag"}
+            className={this.state.tag === "hip-hop" ? "active" : "div-tag"}
             onClick={() => this.getTagChart("hip-hop")}
           >
             <img src={hiphop} alt={"hip-hop"} />
           </div>
           <div
-            className={this.state.tag == "jazz" ? "active" : "div-tag"}
+            className={this.state.tag === "jazz" ? "active" : "div-tag"}
             onClick={() => this.getTagChart("jazz")}
           >
             <img src={jazz} alt={"jazz"} />
           </div>
           <div
-            className={this.state.tag == "reggae" ? "active" : "div-tag"}
+            className={this.state.tag === "reggae" ? "active" : "div-tag"}
             onClick={() => this.getTagChart("reggae")}
           >
             <img src={reggae} alt={"reggae"} />
           </div>
           <div
-            className={this.state.tag == "dance" ? "active" : "div-tag"}
+            className={this.state.tag === "dance" ? "active" : "div-tag"}
             onClick={() => this.getTagChart("dance")}
           >
             <img src={dance} alt={"dance"} />
           </div>
           <div
-            className={this.state.tag == "metal" ? "active" : "div-tag"}
+            className={this.state.tag === "metal" ? "active" : "div-tag"}
             onClick={() => this.getTagChart("metal")}
           >
             <img src={metal} alt={"metal"} />
           </div>
           <div
-            className={this.state.tag == "blues" ? "active" : "div-tag"}
+            className={this.state.tag === "blues" ? "active" : "div-tag"}
             onClick={() => this.getTagChart("blues")}
           >
             <img src={blues} alt={"blues"} />
           </div>
           <div
-            className={this.state.tag == "classical" ? "active" : "div-tag"}
+            className={this.state.tag === "classical" ? "active" : "div-tag"}
             onClick={() => this.getTagChart("classical")}
           >
             <img src={classical} alt={"classical"} />
           </div>
           <div
-            className={this.state.tag == "80s" ? "active" : "div-tag"}
+            className={this.state.tag === "80s" ? "active" : "div-tag"}
             onClick={() => this.getTagChart("80s")}
           >
             <img src={old} alt={"80s"} />
           </div>
           <div
-            className={this.state.tag == "rap" ? "active" : "div-tag"}
+            className={this.state.tag === "rap" ? "active" : "div-tag"}
             onClick={() => this.getTagChart("rap")}
           >
             <img src={rap} alt={"rap"} />

@@ -1,21 +1,18 @@
 export default class googleService {
   googleInit = () => {
-    // if (window.gapi === undefined) {
-    //   console.log("YES/");
-    // window.gapi();
-    // } else {
     console.log(" window.gapi.load/");
-    return window.gapi.load("auth2", function() {
-      window.gapi.auth2
-        .init({
-          client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID
-        })
-        .then(
-          () => console.log("Inin OK"),
-          () => console.log("Init ERR")
-        );
-    });
-    // }
+    return setTimeout(() => {
+      window.gapi.load("auth2", function() {
+        window.gapi.auth2
+          .init({
+            client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID
+          })
+          .then(
+            () => console.log("Inin OK"),
+            () => console.log("Init ERR")
+          );
+      });
+    }, 100);
   };
 
   signIn = () => {
