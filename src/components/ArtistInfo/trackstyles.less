@@ -64,42 +64,34 @@
     .track-item {
       height: 50px;
       display: flex;
+      flex-flow: wrap;
       align-items: center;
-      width: 1400px;
+      // width: 1400px;
       border-bottom: 0.5px solid rgb(172, 176, 201);
 
       .track-block {
         display: flex;
-        // flex-direction: row;
+        flex-direction: row;
+        width: 90%;
         flex-flow: wrap;
         justify-content: start;
+        // border: rgb(37, 220, 20) 1px solid;
         margin-left: 50px;
 
         .track-name {
           // border: rgb(37, 220, 20) 1px solid;
           color: rgb(0, 0, 40);
           text-align: start;
-          width: 750px;
+          // width: 750px;
           font-size: 18px;
           font-weight: 900;
-        }
-        // .track-artist {
-        //   // border: rgb(20, 220, 137) 1px solid;
-        //   // color: rgb(218, 105, 0);
-        //   // font-weight: 500;
-        //   text-decoration: none;
-        //   color: black;
-        //   font-size: 16px;
-        //   text-align: start;
-        //   min-width: 250px;
-        // }
-        .track-artist:hover {
-          text-decoration-line: underline;
+          flex-grow: 10;
         }
         .track-listen {
           color: rgb(202, 64, 0);
           font-style: italic;
-          margin-left: 200px;
+          margin-right: 200px;
+          flex-grow: 1;
         }
       }
     }

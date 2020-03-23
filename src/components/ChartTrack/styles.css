@@ -110,3 +110,6 @@
   padding: 6px 12px;
   margin: 0 -12px;
 }
+.chart-container .number-pages .li-number .number:hover {
+  cursor: pointer;
+}

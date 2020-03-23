@@ -29,9 +29,10 @@ export default class artistService {
     return resArt;
   };
 
-  getTopTracks = artist => {
+  getTopTracks = (artist, hits, page) => {
+    console.log("getTopTracks", artist, hits, page);
     const resTrack = axios.get(
-      `${BASE_URL}${ARTIST_TOP_TRACK}${artist}${API_KEY}${JSON}`
+      `${BASE_URL}${ARTIST_TOP_TRACK}${artist}${API_KEY}${JSON}&limit=${hits}&page=${page}`
     );
     if (!resTrack) {
       throw new Error("Error Artist Info request");

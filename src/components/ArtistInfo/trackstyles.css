@@ -49,12 +49,14 @@
 .album-wrap .album-track .track-item {
   height: 50px;
   display: flex;
+  flex-flow: wrap;
   align-items: center;
-  width: 1400px;
   border-bottom: 0.5px solid #acb0c9;
 }
 .album-wrap .album-track .track-item .track-block {
   display: flex;
+  flex-direction: row;
+  width: 90%;
   flex-flow: wrap;
   justify-content: start;
   margin-left: 50px;
@@ -62,17 +64,15 @@
 .album-wrap .album-track .track-item .track-block .track-name {
   color: #000028;
   text-align: start;
-  width: 750px;
   font-size: 18px;
   font-weight: 900;
-}
-.album-wrap .album-track .track-item .track-block .track-artist:hover {
-  text-decoration-line: underline;
+  flex-grow: 10;
 }
 .album-wrap .album-track .track-item .track-block .track-listen {
   color: #ca4000;
   font-style: italic;
-  margin-left: 200px;
+  margin-right: 200px;
+  flex-grow: 1;
 }
 .album-wrap .album-track .track-item:hover {
   background-color: #cdcde6;

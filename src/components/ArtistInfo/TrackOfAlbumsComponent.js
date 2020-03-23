@@ -17,7 +17,7 @@ class TrackOfAlbumsComponent extends Component {
   componentDidMount() {
     const albumName = this.props.match.params.id || "";
     const artistName = this.props.artistInfo.artist.name;
-    console.log("PROPS_TRACK_ALBUMS: ", this.props);
+    console.log("PROPS_TRACK_ALBUMS: ", this.props.albumInfo.album);
 
     this.api.getAlbumTrack(artistName, albumName).then(res => {
       this.props.getAlbumInfo(res.data);
