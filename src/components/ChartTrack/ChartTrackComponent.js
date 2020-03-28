@@ -204,7 +204,7 @@ class ChartTrackComponent extends Component {
                 <NavLink
                   className="track-artist"
                   activeClassName="active"
-                  to={`/artist/${track.artist.name}`}
+                  to={`/artist/${track.artist.name}/bio`}
                 >
                   {track.artist.name}
                 </NavLink>

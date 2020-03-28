@@ -12,6 +12,7 @@ class HomeComponent extends Component {
     this.apiGoogle.googleInit();
     const logged = cookie.load("token");
     logged ? this.props.isGoogleAuth(true) : console.log("Cookies empty");
+    // this.props.isGoogleAuth(true);
   }
 
   onSignIn = () => {
@@ -34,15 +35,20 @@ class HomeComponent extends Component {
     });
   };
 
+  onClick = () => {
+    console.log("click", this.props);
+  };
+
   render() {
     const { isAuth } = this.props;
     return (
       <div>
         Home Component
         <div>
-          {!isAuth && <button onClick={this.onSignIn}>Sing In</button>}
-          {isAuth && <button onClick={this.onSignOut}>Sing Out</button>}
+          {!isAuth && <button onClick={this.onSignIn}>Sign In</button>}
+          {isAuth && <button onClick={this.onSignOut}>Sign Out</button>}
         </div>
+        <button onClick={this.onClick}>props</button>
       </div>
     );
   }

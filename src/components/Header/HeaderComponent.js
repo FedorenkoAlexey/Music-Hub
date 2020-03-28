@@ -26,7 +26,8 @@ class HeaderComponent extends Component {
   componentDidMount() {
     let token = cookie.load("token");
     this.props.getGoogleName(token);
-    console.log("NAME", this.props.googleName, "TOKEN", token);
+    token ? this.props.isGoogleAuth(true) : console.log("Cookies empty");
+    // console.log("HEADER", this.props.isAuth);
   }
 
   onSearchHandle = e => {
@@ -67,7 +68,11 @@ class HeaderComponent extends Component {
           <div className="header-nav">
             {this.props.isAuth ? (
               <span className="navlink">
-                <NavLink to="/home" activeClassName="active" className="text-link">
+                <NavLink
+                  to="/home"
+                  activeClassName="active"
+                  className="text-link"
+                >
                   Home
                 </NavLink>
                 <NavLink
@@ -90,21 +95,23 @@ class HeaderComponent extends Component {
             )}
           </div>
         </div>
-        <div className="search">
-          <input
-            type="text"
-            value={searchValue}
-            onChange={this.onSearchHandle}
-          />
-          <NavLink
-            activeClassName="active"
-            className="pi pi-search"
-            to={`/search/${searchValue}`}
-            onClick={() => this.onSearch(searchValue)}
-          >
-            search
-          </NavLink>
-        </div>
+        {isAuth && (
+          <div className="search">
+            <input
+              type="text"
+              value={searchValue}
+              onChange={this.onSearchHandle}
+            />
+            <NavLink
+              activeClassName="active"
+              className="pi pi-search"
+              to={`/search/${searchValue}`}
+              onClick={() => this.onSearch(searchValue)}
+            >
+              search
+            </NavLink>
+          </div>
+        )}
       </div>
     );
   }

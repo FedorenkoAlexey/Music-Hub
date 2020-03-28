@@ -7,6 +7,7 @@ import HomeComponent from "../components/Home/HomeComponent";
 import ChartTrackComponent from "../components/ChartTrack/ChartTrackComponent";
 import ArtistNameComponent from "../components/ArtistName/ArtistNameComponent";
 import SearchComponent from "../components/Search/SearchComponent";
+import PrivateRoute from "./PrivateRoute";
 
 class Routes extends PureComponent {
   componentDidMount() {
@@ -20,13 +21,10 @@ class Routes extends PureComponent {
           <HeaderComponent />
           <Switch>
             <Route exact path="/home" component={HomeComponent} />
-            {this.props.isAuth ? (
-              <Route path="/chart" component={ChartTrackComponent} />
-            ) : (
-              <Redirect from="/" to="/home" />
-            )}
-            <Route path="/artist/:id" component={ArtistNameComponent} />
-            <Route path="/search/:id" component={SearchComponent} />
+            <PrivateRoute path="/chart" exact component={ChartTrackComponent} />
+            <PrivateRoute path="/search/:id" component={SearchComponent} />
+            <PrivateRoute path="/artist/:id" component={ArtistNameComponent} />
+            <Redirect from="/" to="/home" />
           </Switch>
         </BrowserRouter>
       </div>
