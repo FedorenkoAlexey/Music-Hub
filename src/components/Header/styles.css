@@ -29,6 +29,12 @@
 .wrapper .header .header-nav .navlink .active {
   color: #ff6800;
 }
+.wrapper .header .header-nav h2 {
+  font-family: "Caveat";
+  font-size: 150px;
+  font-weight: 700;
+  color: #ff3c00;
+}
 .wrapper .header .header-user {
   margin-right: 30px;
   width: 200px;

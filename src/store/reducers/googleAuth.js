@@ -4,7 +4,9 @@ import { IS_GOOGLE_AUTH } from "../actions/googleAuth";
 const initState = {
   googleName: null,
   token: null,
-  isAuth: false
+  isAuth: false,
+  authLogin: "Alexey",
+  authPassword: "admin"
 };
 
 export const googleReducer = (state = initState, action) => {

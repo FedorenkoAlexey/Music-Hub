@@ -1,0 +1,132 @@
+.home-wrapper {
+  background: linear-gradient(90deg, #313b50 25%, rgba(79, 78, 141, 0) 100%), url("../../assets/images/background.png") no-repeat center;
+  border: #222124 1px solid;
+  height: 550px;
+  background-size: cover;
+}
+.home-wrapper .left-wrap {
+  margin-top: 100px;
+}
+.home-wrapper .left-wrap .message {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 352px;
+  height: 400px;
+  border-radius: 2px;
+  filter: drop-shadow(-3px -3px 20px rgba(5, 5, 5, 0.829));
+  background-color: #d3d4ff;
+  margin-left: 80px;
+}
+.home-wrapper .left-wrap .message .auth-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 352px;
+  height: 400px;
+  background-color: #d3d4ff;
+}
+.home-wrapper .left-wrap .message h3 {
+  font-size: 20px;
+  line-height: 25px;
+  color: #37302f;
+  font-weight: 600;
+  text-align: center;
+}
+.home-wrapper .left-wrap .message h3 .send {
+  color: #ff5c36;
+}
+.home-wrapper .left-wrap .message .google-mess {
+  color: green;
+}
+.home-wrapper .left-wrap .message .google-mess .btn-google {
+  text-align: left;
+  font-size: 18px;
+  width: 240px;
+  color: #ffffff;
+  text-decoration: none;
+  background: #467feb;
+  border: none;
+  outline: none;
+}
+.home-wrapper .left-wrap .message .google-mess .btn-google .span {
+  margin: 0 20px 0 -5px;
+  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRcF-1soagWl85pAo-9vcPDic0TEFuJVfdT9dXtbcW41G9tqeMN");
+  background-size: cover;
+  display: inline-block;
+  vertical-align: middle;
+  width: 35px;
+  height: 35px;
+}
+.home-wrapper .left-wrap .message .google-mess .btn-google:hover {
+  background: #719ae6;
+  cursor: pointer;
+}
+.home-wrapper .left-wrap .message .google-mess .btn-google:active {
+  background: #2d5cc2;
+}
+.home-wrapper .left-wrap .message .or {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  font-weight: 700;
+  opacity: 0.5;
+  margin-bottom: 10px;
+}
+.home-wrapper .left-wrap .message .or .or-left {
+  border-bottom: 2px solid #ff6800;
+  width: 120px;
+  margin: 0 15px 10px 0;
+}
+.home-wrapper .left-wrap .message .or .or-right {
+  border-bottom: 2px solid #ff6800;
+  width: 120px;
+  margin: 0 0 10px 15px;
+}
+.home-wrapper .left-wrap .message .input {
+  color: #adadad;
+  width: 290px;
+  font-family: "Open Sans";
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 25px;
+  border: none;
+  outline: none;
+  background-color: #d3d4ff;
+}
+.home-wrapper .left-wrap .message .line {
+  width: 294px;
+  height: 2px;
+  margin-top: -30px;
+  border-bottom: 2px solid #adadad;
+}
+.home-wrapper .left-wrap .message .mess {
+  color: #adadad;
+  margin-left: -200px;
+  font-family: "Open Sans";
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 25px;
+}
+.home-wrapper .left-wrap .message .mess-type {
+  width: 294px;
+  height: 10px;
+  border-bottom: 2px solid #adadad;
+}
+.home-wrapper .left-wrap .message .login-btn {
+  text-decoration: none;
+  outline: none;
+  background: #ff5c36;
+  padding: 10px 80px;
+  color: white;
+  border: 1px solid #ff5c36;
+  border-radius: 25px;
+  font-size: 18px;
+  margin: 10px;
+  cursor: pointer;
+}
+.home-wrapper .left-wrap .message .login-btn:active {
+  background-color: #ff3102;
+}

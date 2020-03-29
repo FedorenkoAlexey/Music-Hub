@@ -41,20 +41,9 @@ class ArtistNameComponent extends Component {
 
   render() {
     const { artist } = this.props.artistInfo;
-    // const { album } = this.props.topAlbums;
     return (
       <div className="artist-container">
-        <div
-          className="artist-header"
-          // style={{
-          //   background: `linear-gradient(
-          //     90deg,
-          //     rgba(65, 69, 78, 0),
-          //     rgb(3, 50, 82) 100%
-          //   )`,
-          //   zIndex: "2"
-          // }}
-        >
+        <div className="artist-header">
           <div className="artist-info">
             <div className="wrap-info">
               <div className="artist-name">{artist.name}</div>

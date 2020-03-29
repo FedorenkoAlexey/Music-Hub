@@ -18,6 +18,7 @@ import "primereact/resources/themes/nova-light/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import "./styles.css";
+import "./fonts.css";
 
 class HeaderComponent extends Component {
   apiGoogle = new googleService();
@@ -84,7 +85,7 @@ class HeaderComponent extends Component {
                 </NavLink>
               </span>
             ) : (
-              <h2>Sign in please</h2>
+              <h2>Music Hub</h2>
             )}
           </div>
           <div className="header-user">
