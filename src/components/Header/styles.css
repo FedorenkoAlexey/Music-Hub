@@ -11,7 +11,12 @@
 .wrapper .header .header-logo {
   margin-left: 30px;
   font-style: italic;
-  width: 200px;
+  min-width: 200px;
+}
+.wrapper .header .header-logo .logo {
+  font-family: "Caveat";
+  font-size: 50px;
+  color: #ff3c00;
 }
 .wrapper .header .header-nav {
   width: 50%;
@@ -32,12 +37,21 @@
 .wrapper .header .header-nav h2 {
   font-family: "Caveat";
   font-size: 150px;
-  font-weight: 700;
   color: #ff3c00;
 }
 .wrapper .header .header-user {
   margin-right: 30px;
   width: 200px;
+}
+.wrapper .header .header-user .welcome {
+  font-family: "Caveat";
+  font-size: 30px;
+  color: #ff3c00;
+}
+.wrapper .header .header-user .name {
+  font-family: "Caveat";
+  font-size: 30px;
+  color: #ffe3d0;
 }
 .wrapper .search {
   width: 100%;

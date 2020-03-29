@@ -1,7 +1,7 @@
 .home-wrapper {
   background: linear-gradient(90deg, #313b50 25%, rgba(79, 78, 141, 0) 100%), url("../../assets/images/background.png") no-repeat center;
   border: #222124 1px solid;
-  height: 550px;
+  height: 655px;
   background-size: cover;
 }
 .home-wrapper .left-wrap {

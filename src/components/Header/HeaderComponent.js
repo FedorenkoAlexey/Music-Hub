@@ -65,9 +65,11 @@ class HeaderComponent extends Component {
     return (
       <div className="wrapper">
         <div className="header">
-          <div className="header-logo">MusicHUB FM</div>
+          <div className="header-logo">
+            {!!isAuth && <span className="logo">MusicHUB FM</span>}
+          </div>
           <div className="header-nav">
-            {this.props.isAuth ? (
+            {isAuth ? (
               <span className="navlink">
                 <NavLink
                   to="/home"
@@ -81,7 +83,7 @@ class HeaderComponent extends Component {
                   activeClassName="active"
                   className="text-link"
                 >
-                  Top Chart Track
+                  Chart Tracks
                 </NavLink>
               </span>
             ) : (
@@ -91,7 +93,8 @@ class HeaderComponent extends Component {
           <div className="header-user">
             {isAuth && (
               <div>
-                <p className="welcome">Welcome</p> {googleName}
+                {/* <p className="welcome">Welcome</p>{" "} */}
+                <span className="name">{googleName}</span>
               </div>
             )}
           </div>
