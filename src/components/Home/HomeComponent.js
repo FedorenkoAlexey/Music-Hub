@@ -48,7 +48,7 @@ class HomeComponent extends Component {
           {!isAuth && <button onClick={this.onSignIn}>Sign In</button>}
           {isAuth && <button onClick={this.onSignOut}>Sign Out</button>}
         </div>
-        <button onClick={this.onClick}>props</button>
+        {/* <button onClick={this.onClick}>props</button> */}
       </div>
     );
   }

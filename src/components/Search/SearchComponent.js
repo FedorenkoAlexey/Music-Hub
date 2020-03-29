@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 // import { Route, Switch, NavLink } from "react-router-dom";
 import artistService from "../../services/artistService";
+import cover from "../../assets/images/noCover.png";
 import "./styles.css";
 
 import { getArtistInfo } from "../../store/actions/getTracks";
@@ -50,7 +51,7 @@ class SearchComponent extends Component {
               <NavLink
                 className="artist-name"
                 activeClassName="active"
-                to={`/artist/${artist.name}`}
+                to={`/artist/${artist.name}/bio`}
               >
                 {artist.name}
               </NavLink>
@@ -68,7 +69,14 @@ class SearchComponent extends Component {
           {album.map(album => (
             <li className="album-item" key={album.name + album.url}>
               <div className="album-img">
-                <img src={album.image[2]["#text"]} alt={"album-img"} />
+                <img
+                  src={
+                    album.image[2]["#text"] === ""
+                      ? cover
+                      : album.image[2]["#text"]
+                  }
+                  alt={"album-img"}
+                />
               </div>
               <span className="album-name">
                 {/* <NavLink
@@ -102,7 +110,7 @@ class SearchComponent extends Component {
                 <NavLink
                   className="track-artist"
                   activeClassName="active"
-                  to={`/artist/${track.artist}`}
+                  to={`/artist/${track.artist}/bio`}
                 >
                   {track.artist}
                 </NavLink>
