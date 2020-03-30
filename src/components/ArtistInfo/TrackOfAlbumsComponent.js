@@ -16,9 +16,11 @@ class TrackOfAlbumsComponent extends Component {
 
   componentDidMount() {
     const albumName = this.props.match.params.id || "";
-    const artistName = this.props.artistInfo.artist.name;
-    console.log("Params: ", this.props.match);
-    console.log("PROPS_TRACK_ALBUMS: ", this.props.albumInfo.album);
+    // const artistName = this.props.artistInfo.artist.name;
+    const artistName = this.props.location.state.artistName;
+    console.log("Props: ", this.props);
+    console.log("DATA", this.props.location.state.artistName);
+    // console.log("PROPS_TRACK_ALBUMS: ", this.props.albumInfo.album);
 
     this.api.getAlbumTrack(artistName, albumName).then(res => {
       this.props.getAlbumInfo(res.data);
@@ -27,11 +29,10 @@ class TrackOfAlbumsComponent extends Component {
       });
       console.log("RESULT_TRACK_ALBUMS: ", res.data);
     });
+
+    console.log("albumName", albumName, "artistName", artistName);
   }
-  click = () => {
-    console.log("PROPS:", this.props);
-    console.log("TRACK:", this.props.albumInfo.album.tracks.track);
-  };
+
   render() {
     const { artist } = this.props.artistInfo;
     const { album } = this.props.albumInfo;
@@ -49,7 +50,7 @@ class TrackOfAlbumsComponent extends Component {
             ) : (
               <p></p>
             )}
-            {/* <p>Album Info: {album.wiki.summary}</p> */}
+
             <p>Listenets: {album.listeners}</p>
             <p className="play">Playcount: {album.playcount}</p>
           </div>

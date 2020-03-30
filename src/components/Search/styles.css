@@ -78,6 +78,10 @@
   font-size: 18px;
   color: #00dacf;
 }
+.search-container .search-albums .album-item .album-name:hover {
+  text-decoration-line: underline;
+  color: #00dacf;
+}
 .search-container .search-albums .album-item span {
   color: #fff;
 }

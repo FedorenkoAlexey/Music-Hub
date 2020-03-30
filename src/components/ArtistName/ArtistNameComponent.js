@@ -31,6 +31,7 @@ class ArtistNameComponent extends Component {
     this.api.getTopAlbums(artistName).then(result => {
       this.props.getTopAlbums(result.data.topalbums);
       const apiImage = this.props.topAlbums.album[0].image[3]["#text"];
+      // const apiImage = "";
       apiImage
         ? this.setState({
             image: apiImage

@@ -1,22 +1,26 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import "./albumstyles.css";
 import cover from "../../assets/images/noCover.png";
 
 import artistService from "../../services/artistService";
-import { getArtistInfo } from "../../store/actions/getTracks";
+import { getArtistInfo, getTopAlbums } from "../../store/actions/getTracks";
 
 class ArtistAlbumsComponent extends Component {
   api = new artistService();
   componentDidMount() {
     const artistName = this.props.match.params.id || "";
     console.log("Props_Art-Album", this.props);
-    // this.props.artistInfo.artist === ""
-    //   ? this.artistService.getArtist(artistName).then(res => {
-    //       this.props.getArtistInfo(res.data);
-    //     })
-    //   : console.log("2");
+
+    this.props.artistInfo.artist === ""
+      ? this.api.getArtist(artistName).then(res => {
+          this.props.getArtistInfo(res.data);
+        }) &&
+        this.api.getTopAlbums(artistName).then(res => {
+          this.props.getTopAlbums(res.data.topalbums);
+        })
+      : console.log("2");
   }
 
   render() {
@@ -28,9 +32,12 @@ class ArtistAlbumsComponent extends Component {
         <ul className="search-albums">
           {album.map(album => (
             <li className="album-item" key={album.name}>
-              <NavLink
+              <Link
                 className="text-link"
-                to={`/artist/${artist.name}/album/${album.name}`}
+                to={{
+                  pathname: `/artist/${artist.name}/album/${album.name}`,
+                  state: { artistName: artist.name }
+                }}
               >
                 <div className="album-img">
                   <img
@@ -45,7 +52,7 @@ class ArtistAlbumsComponent extends Component {
                 <span className="album-name">
                   {album.name === "(null)" ? "" : album.name}
                 </span>
-              </NavLink>
+              </Link>
             </li>
           ))}
         </ul>
@@ -61,7 +68,8 @@ const mapState = (state, ownProps) => {
   };
 };
 const dispatch = {
-  getArtistInfo: getArtistInfo
+  getArtistInfo: getArtistInfo,
+  getTopAlbums: getTopAlbums
 };
 
 export default connect(mapState, dispatch)(ArtistAlbumsComponent);

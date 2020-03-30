@@ -2,14 +2,15 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import {
   // Route, Switch,
-  NavLink
+  NavLink,
+  Link
 } from "react-router-dom";
 // import { Route, Switch, NavLink } from "react-router-dom";
 import artistService from "../../services/artistService";
 import cover from "../../assets/images/noCover.png";
 import "./styles.css";
 
-import { getArtistInfo } from "../../store/actions/getTracks";
+import { getArtistInfo, getAlbumInfo } from "../../store/actions/getTracks";
 
 class SearchComponent extends Component {
   api = new artistService();
@@ -23,15 +24,13 @@ class SearchComponent extends Component {
 
   componentDidMount() {
     // console.log("search ", this.props);
+    const search = this.props.match.params.id;
+    console.log(search);
   }
 
-  click = () => {
-    console.log("search-click ", this.props);
-  };
-  artInfo = artistName => {
-    console.log("name", artistName);
-    this.api.getArtist(artistName).then(res => {
-      this.props.getArtistInfo(res.data);
+  artInfo = (artistName, albumName) => {
+    this.api.getAlbumTrack(artistName, albumName).then(res => {
+      this.props.getAlbumInfo(res.data);
     });
   };
 
@@ -79,14 +78,15 @@ class SearchComponent extends Component {
                 />
               </div>
               <span className="album-name">
-                {/* <NavLink
-                  onClick={() => this.artInfo(album.artist)}
+                <Link
                   className="album-name"
-                  activeClassName="active"
-                  to={`/artist/${album.artist}/album/${album.name}`}
-                > */}
-                {album.name}
-                {/* </NavLink> */}
+                  to={{
+                    pathname: `/artist/${album.artist}/album/${album.name}`,
+                    state: { artistName: album.artist }
+                  }}
+                >
+                  {album.name}{" "}
+                </Link>
               </span>
               <span>
                 <NavLink
@@ -136,7 +136,8 @@ const mapState = (state, ownProps) => {
 };
 
 const dispatch = {
-  getArtistInfo: getArtistInfo
+  getArtistInfo: getArtistInfo,
+  getAlbumInfo: getAlbumInfo
 };
 
 export default connect(mapState, dispatch)(SearchComponent);

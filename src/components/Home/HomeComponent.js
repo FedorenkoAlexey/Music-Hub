@@ -98,7 +98,7 @@ class HomeComponent extends Component {
   };
 
   render() {
-    const { isAuth, authLogin, authPassword } = this.props;
+    const { isAuth } = this.props;
     const { login, password } = this.state;
     return (
       <div className="home-wrapper">
