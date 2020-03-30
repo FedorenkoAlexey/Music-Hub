@@ -1,37 +1,59 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {
-  // Route, Switch,
-  NavLink,
-  Link
-} from "react-router-dom";
-// import { Route, Switch, NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
+
 import artistService from "../../services/artistService";
+import searchService from "../../services/searchService";
 import cover from "../../assets/images/noCover.png";
 import "./styles.css";
 
 import { getArtistInfo, getAlbumInfo } from "../../store/actions/getTracks";
+import { setSearchValue } from "../../store/actions/getTracks";
+import {
+  getSearchAlbums,
+  getSearchArtist,
+  getSearchTracks
+} from "../../store/actions/search";
 
 class SearchComponent extends Component {
   api = new artistService();
-
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     imgAlbum: ""
-  //   };
-  // }
+  apiSearch = new searchService();
 
   componentDidMount() {
     // console.log("search ", this.props);
     const search = this.props.match.params.id;
     console.log(search);
+    this.onSearch(search);
   }
 
   artInfo = (artistName, albumName) => {
     this.api.getAlbumTrack(artistName, albumName).then(res => {
       this.props.getAlbumInfo(res.data);
     });
+  };
+
+  onSearch = params => {
+    if (params === "") {
+      console.log("Set search params");
+    } else {
+      this.apiSearch.getSearchArtist(params).then(res => {
+        this.props.getSearchArtist(res.data.results.artistmatches);
+        console.log("RES_SEARCH_ARTIST", res.data.results.artistmatches);
+        console.log("Props_ARTIST", this.props);
+      });
+
+      this.apiSearch.getSearchAlbums(params).then(res => {
+        this.props.getSearchAlbums(res.data.results.albummatches);
+        console.log("RES_SEARCH_Albums", res.data.results.albummatches);
+      });
+
+      this.apiSearch.getSearchTracks(params).then(res => {
+        this.props.getSearchTracks(res.data.results.trackmatches);
+        console.log("RES_SEARCH_TRAKS", res.data.results.trackmatches);
+      });
+
+      this.props.setSearchValue("");
+    }
   };
 
   render() {
@@ -137,7 +159,11 @@ const mapState = (state, ownProps) => {
 
 const dispatch = {
   getArtistInfo: getArtistInfo,
-  getAlbumInfo: getAlbumInfo
+  getAlbumInfo: getAlbumInfo,
+  setSearchValue: setSearchValue,
+  getSearchAlbums: getSearchAlbums,
+  getSearchArtist: getSearchArtist,
+  getSearchTracks: getSearchTracks
 };
 
 export default connect(mapState, dispatch)(SearchComponent);

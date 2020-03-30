@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Federo';
+    src: url('Federo-Regular.eot');
+    src: local('Federo'), local('Federo-Regular'),
+        url('Federo-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Federo-Regular.woff2') format('woff2'),
+        url('Federo-Regular.woff') format('woff'),
+        url('Federo-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+

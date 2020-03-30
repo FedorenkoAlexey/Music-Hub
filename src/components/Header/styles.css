@@ -26,6 +26,8 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  font-family: "Federo";
+  font-size: 40px;
 }
 .wrapper .header .header-nav .navlink .text-link {
   color: skyblue;

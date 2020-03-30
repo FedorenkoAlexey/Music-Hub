@@ -106,7 +106,7 @@ class HomeComponent extends Component {
           <div className="message">
             {isAuth ? (
               <h3 className="test">
-                <span className="send">Welcome </span>
+                <span className="send">Welcome</span>
               </h3>
             ) : (
               <div className="auth-container">

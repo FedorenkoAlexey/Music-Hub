@@ -10,6 +10,7 @@ import artistService from "../../services/artistService";
 
 import { getArtistInfo, getTopAlbums } from "../../store/actions/getTracks";
 import "./styles.css";
+import "./fonts.css";
 import "./media.css";
 
 class ArtistNameComponent extends Component {
@@ -107,7 +108,9 @@ class ArtistNameComponent extends Component {
             component={TrackOfAlbumsComponent}
           />
         </Switch>
+        <div className="art-div"></div>
       </div>
+      
     );
   }
 }
