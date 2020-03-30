@@ -20,7 +20,7 @@ class ArtistAlbumsComponent extends Component {
         this.api.getTopAlbums(artistName).then(res => {
           this.props.getTopAlbums(res.data.topalbums);
         })
-      : console.log("2");
+      : console.log("");
   }
 
   render() {

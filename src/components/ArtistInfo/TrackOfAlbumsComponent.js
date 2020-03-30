@@ -16,10 +16,8 @@ class TrackOfAlbumsComponent extends Component {
 
   componentDidMount() {
     const albumName = this.props.match.params.id || "";
-    // const artistName = this.props.artistInfo.artist.name;
     const artistName = this.props.location.state.artistName;
     console.log("Props: ", this.props);
-    console.log("DATA", this.props.location.state.artistName);
     // console.log("PROPS_TRACK_ALBUMS: ", this.props.albumInfo.album);
 
     this.api.getAlbumTrack(artistName, albumName).then(res => {
@@ -29,8 +27,6 @@ class TrackOfAlbumsComponent extends Component {
       });
       console.log("RESULT_TRACK_ALBUMS: ", res.data);
     });
-
-    console.log("albumName", albumName, "artistName", artistName);
   }
 
   render() {

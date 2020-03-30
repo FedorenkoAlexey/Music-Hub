@@ -1,11 +1,12 @@
 .toptrack-wrap {
-  background: #90b0eb;
+  border: 0.5px solid rgba(2, 36, 255, 0);
+  background: #d3d3ec;
 }
 .toptrack-wrap .paginator {
-  height: 38px;
+  height: 40px;
   outline: none;
   border: none;
-  background: cornflowerblue;
+  background-color: #d3d3ec;
 }
 .toptrack-wrap .top-track {
   background-color: #d3d3ec;
@@ -17,7 +18,6 @@
 }
 .toptrack-wrap .top-track .track-item {
   height: 50px;
-  margin-top: 5px;
   display: flex;
   align-items: center;
   border-bottom: 0.5px solid #acb0c9;
