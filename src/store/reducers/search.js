@@ -1,7 +1,10 @@
-import { GET_SEARCH_TRACKS } from "../actions/search";
-import { GET_SEARCH_ALBUMS } from "../actions/search";
-import { GET_SEARCH_ARTIST } from "../actions/search";
-import { GET_SEARCH_VALUE_ALL } from "../actions/search";
+import {
+  GET_SEARCH_TRACKS,
+  GET_SEARCH_VALUE_ALL,
+  GET_SEARCH_ALBUMS,
+  GET_SEARCH_ARTIST,
+  GET_SEARCH_MUSIC
+} from "../actions/search";
 
 const initState = {
   searchValueAll: "",
@@ -13,6 +16,21 @@ const initState = {
   },
   searchArtists: {
     artist: []
+  },
+  // hitsSearch: []
+  hitsSearch: {
+    hits: [
+      {
+        result: {
+          title: [],
+          id: [],
+          primary_artist: {
+            name: [],
+            id: []
+          }
+        }
+      }
+    ]
   }
 };
 
@@ -37,6 +55,11 @@ export const searchReducer = (state = initState, action) => {
       return {
         ...state,
         searchArtists: action.payload
+      };
+    case GET_SEARCH_MUSIC:
+      return {
+        ...state,
+        hitsSearch: action.payload
       };
   }
   return state;

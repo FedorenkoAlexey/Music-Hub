@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import googleService from "../../services/googleService";
+import musicService from "../../services/musicService";
 import { connect } from "react-redux";
 import cookie from "react-cookies";
 
@@ -9,6 +10,7 @@ import "./fonts.css";
 
 class HomeComponent extends Component {
   apiGoogle = new googleService();
+  apiMusic = new musicService();
 
   constructor(props) {
     super(props);
@@ -93,8 +95,8 @@ class HomeComponent extends Component {
     });
   };
 
-  onClick = () => {
-    console.log("click", this.props);
+  onGenius = () => {
+    this.apiMusic.onSearch("madonna");
   };
 
   render() {
@@ -102,6 +104,7 @@ class HomeComponent extends Component {
     const { login, password } = this.state;
     return (
       <div className="home-wrapper">
+        <button onClick={this.onGenius}>!!!!!!!!!</button>
         <div className="left-wrap">
           <div className="message">
             {isAuth ? (

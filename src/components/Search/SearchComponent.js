@@ -60,6 +60,7 @@ class SearchComponent extends Component {
     const { album } = this.props.searchAlbums;
     const { track } = this.props.searchTracks;
     const { artist } = this.props.searchArtists;
+    const { hits } = this.props.hitsSearch;
     return (
       <div className="search-container">
         <div className="search-res-artist">Artists results</div>
@@ -123,7 +124,7 @@ class SearchComponent extends Component {
           ))}
         </ul>
         <div className="search-res-text-track">Tracks results</div>
-        <ol className="search-tracks">
+        {/* <ol className="search-tracks">
           {track.map(track => (
             <li className="track-item" key={track.listeners + track.name}>
               <div className="track-block">
@@ -141,6 +142,36 @@ class SearchComponent extends Component {
               </div>
             </li>
           ))}
+        </ol> */}
+
+        <ol className="search-tracks">
+          {hits.map(hit => (
+            <li className="track-item" key={hit.result.id}>
+              <div className="track-block">
+                <div
+                  className="track-img"
+                  style={{
+                    backgroundImage: `url(${hit.result.header_image_url} )`
+                  }}
+                ></div>
+                <div className="track-name">
+                  {hit.result.title} - {hit.result.id}{" "}
+                </div>
+
+                <NavLink
+                  className="track-artist"
+                  activeClassName="active"
+                  to={`/artist/${hit.result.primary_artist.name}/bio`}
+                >
+                  {hit.result.primary_artist.name}
+                </NavLink>
+
+                <div className="track-listen">
+                  Duration: {hit.result.pyongs_count}
+                </div>
+              </div>
+            </li>
+          ))}
         </ol>
       </div>
     );
@@ -153,7 +184,8 @@ const mapState = (state, ownProps) => {
     searchValue: state.trackReducer.searchValue,
     searchAlbums: state.searchReducer.searchAlbums,
     searchTracks: state.searchReducer.searchTracks,
-    searchArtists: state.searchReducer.searchArtists
+    searchArtists: state.searchReducer.searchArtists,
+    hitsSearch: state.searchReducer.hitsSearch
   };
 };
 

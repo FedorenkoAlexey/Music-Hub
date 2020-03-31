@@ -120,6 +120,13 @@
   justify-content: start;
   margin-left: 50px;
 }
+.search-container .search-tracks .track-item .track-block .track-img {
+  margin: 0 20px 0 -20px;
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  display: inline-block;
+}
 .search-container .search-tracks .track-item .track-block .track-name {
   color: #000028;
   text-align: start;

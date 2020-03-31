@@ -5,11 +5,13 @@ import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import googleService from "../../services/googleService";
 import searchService from "../../services/searchService";
+import musicService from "../../services/musicService";
 import { getGoogleName, isGoogleAuth } from "../../store/actions/googleAuth";
 import {
   getSearchAlbums,
   getSearchArtist,
-  getSearchTracks
+  getSearchTracks,
+  getSearchMusic
 } from "../../store/actions/search";
 import { setSearchValue } from "../../store/actions/getTracks";
 import cookie from "react-cookies";
@@ -23,6 +25,7 @@ import "./fonts.css";
 class HeaderComponent extends Component {
   apiGoogle = new googleService();
   apiSearch = new searchService();
+  apiMusic = new musicService();
 
   componentDidMount() {
     let token = cookie.load("token");
@@ -54,6 +57,25 @@ class HeaderComponent extends Component {
       this.apiSearch.getSearchTracks(params).then(res => {
         this.props.getSearchTracks(res.data.results.trackmatches);
         console.log("RES_SEARCH_TRAKS", res.data.results.trackmatches);
+      });
+
+      //=================================================//
+      this.apiMusic.onSearch(params).then(res => {
+        this.props.getSearchMusic(res.data.response);
+        console.log(this.props);
+        // console.log(res.data.response.hits[0].result.title);
+        // console.log(res.data.response.hits[1].result.title);
+        // console.log(res.data.response.hits[2].result.title);
+        // console.log(res.data.response.hits[3].result.title);
+        // console.log(res.data.response.hits[4].result.title);
+        // console.log(res.data.response.hits[5].result.title);
+        // console.log(res.data.response.hits[6].result.title);
+        // console.log("==================");
+        // console.log(res.data.response.hits[0].result.primary_artist.name);
+        // console.log(res.data.response.hits[1].result.primary_artist.name);
+        // console.log(res.data.response.hits[2].result.primary_artist.name);
+        // console.log(res.data.response.hits[3].result.primary_artist.name);
+        // console.log(res.data.response.hits[4].result.primary_artist.name);
       });
 
       this.props.setSearchValue("");
@@ -128,7 +150,8 @@ const mapState = state => {
     searchValue: state.trackReducer.searchValue,
     searchAlbums: state.searchReducer.searchAlbums,
     searchTracks: state.searchReducer.searchTracks,
-    searchArtists: state.searchReducer.searchArtists
+    searchArtists: state.searchReducer.searchArtists,
+    hitsSearch: state.searchReducer.hitsSearch
   };
 };
 
@@ -138,7 +161,8 @@ const dispatch = {
   setSearchValue: setSearchValue,
   getSearchAlbums: getSearchAlbums,
   getSearchArtist: getSearchArtist,
-  getSearchTracks: getSearchTracks
+  getSearchTracks: getSearchTracks,
+  getSearchMusic: getSearchMusic
 };
 
 export default connect(mapState, dispatch)(HeaderComponent);
