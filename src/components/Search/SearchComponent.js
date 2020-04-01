@@ -154,9 +154,17 @@ class SearchComponent extends Component {
                     backgroundImage: `url(${hit.result.header_image_url} )`
                   }}
                 ></div>
-                <div className="track-name">
+                {/* <div className="track-name">
                   {hit.result.title} - {hit.result.id}{" "}
-                </div>
+                </div> */}
+
+                <NavLink
+                  className="track-name"
+                  activeClassName="active"
+                  to={`/track/${hit.result.id}`}
+                >
+                  {hit.result.title}
+                </NavLink>
 
                 <NavLink
                   className="track-artist"

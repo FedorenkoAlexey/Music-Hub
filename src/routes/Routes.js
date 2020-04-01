@@ -7,6 +7,7 @@ import HomeComponent from "../components/Home/HomeComponent";
 import ChartTrackComponent from "../components/ChartTrack/ChartTrackComponent";
 import ArtistNameComponent from "../components/ArtistName/ArtistNameComponent";
 import SearchComponent from "../components/Search/SearchComponent";
+import TrackInfoComponent from "../components/TrackInfo/TrackInfoComponent";
 import PrivateRoute from "./PrivateRoute";
 
 class Routes extends PureComponent {
@@ -24,6 +25,7 @@ class Routes extends PureComponent {
             <PrivateRoute path="/chart" exact component={ChartTrackComponent} />
             <PrivateRoute path="/search/:id" component={SearchComponent} />
             <PrivateRoute path="/artist/:id" component={ArtistNameComponent} />
+            <PrivateRoute path="/track/:id" component={TrackInfoComponent} />
             <Redirect from="/" to="/home" />
           </Switch>
         </BrowserRouter>

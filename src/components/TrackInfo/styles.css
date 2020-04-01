@@ -1,0 +1,30 @@
+.track-container .track-img {
+  width: 450px;
+  height: 350px;
+  margin-left: 50px;
+  background-size: cover;
+}
+.track-container .apple-music {
+  color: blue;
+  width: 100px;
+  min-height: 24px;
+  background-image: url("https://assets.sonos.com/care/kb/images/FAQ3646/Apple_Music_Logo.png");
+  background-size: contain;
+}
+.track-container .media {
+  margin: 10px 0;
+}
+.track-container .media .soundcloud {
+  color: #ffbb00;
+  width: 99px;
+  min-height: 55px;
+  background-image: url("https://central.asia-news.com/cnmi_ca/images/2018/05/18/12744-soundcloud-585_329.jpg");
+  background-size: contain;
+}
+.track-container .media .youtube {
+  color: red;
+  width: 95px;
+  min-height: 40px;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Logo_YouTube_por_Hernando.svg/1280px-Logo_YouTube_por_Hernando.svg.png");
+  background-size: contain;
+}

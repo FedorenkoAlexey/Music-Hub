@@ -96,7 +96,8 @@ class HomeComponent extends Component {
   };
 
   onGenius = () => {
-    this.apiMusic.onSearch("madonna");
+    // this.apiMusic.onSearch("madonna");
+    this.apiMusic.trackInfo().then(res => console.log("INFO", res.data));
   };
 
   render() {
