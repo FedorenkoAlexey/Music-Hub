@@ -11,7 +11,7 @@ import {
   getSearchAlbums,
   getSearchArtist,
   getSearchTracks,
-  getSearchMusic
+  getSearchMusic,
 } from "../../store/actions/search";
 import { setSearchValue } from "../../store/actions/getTracks";
 import cookie from "react-cookies";
@@ -34,48 +34,35 @@ class HeaderComponent extends Component {
     // console.log("HEADER", this.props.isAuth);
   }
 
-  onSearchHandle = e => {
+  onSearchHandle = (e) => {
     let search = e.target.value;
     this.props.setSearchValue(search);
   };
 
-  onSearch = params => {
+  onSearch = (params) => {
     if (params === "") {
       console.log("Set search params");
     } else {
-      this.apiSearch.getSearchArtist(params).then(res => {
+      this.apiSearch.getSearchArtist(params).then((res) => {
         this.props.getSearchArtist(res.data.results.artistmatches);
         console.log("RES_SEARCH_ARTIST", res.data.results.artistmatches);
-        console.log("Props_ARTIST", this.props);
+        // console.log("Props_ARTIST", this.props);
       });
 
-      this.apiSearch.getSearchAlbums(params).then(res => {
+      this.apiSearch.getSearchAlbums(params).then((res) => {
         this.props.getSearchAlbums(res.data.results.albummatches);
         console.log("RES_SEARCH_Albums", res.data.results.albummatches);
       });
 
-      this.apiSearch.getSearchTracks(params).then(res => {
+      this.apiSearch.getSearchTracks(params).then((res) => {
         this.props.getSearchTracks(res.data.results.trackmatches);
         console.log("RES_SEARCH_TRAKS", res.data.results.trackmatches);
       });
 
       //=================================================//
-      this.apiMusic.onSearch(params).then(res => {
+      this.apiMusic.onSearch(params).then((res) => {
         this.props.getSearchMusic(res.data.response);
         console.log(this.props);
-        // console.log(res.data.response.hits[0].result.title);
-        // console.log(res.data.response.hits[1].result.title);
-        // console.log(res.data.response.hits[2].result.title);
-        // console.log(res.data.response.hits[3].result.title);
-        // console.log(res.data.response.hits[4].result.title);
-        // console.log(res.data.response.hits[5].result.title);
-        // console.log(res.data.response.hits[6].result.title);
-        // console.log("==================");
-        // console.log(res.data.response.hits[0].result.primary_artist.name);
-        // console.log(res.data.response.hits[1].result.primary_artist.name);
-        // console.log(res.data.response.hits[2].result.primary_artist.name);
-        // console.log(res.data.response.hits[3].result.primary_artist.name);
-        // console.log(res.data.response.hits[4].result.primary_artist.name);
       });
 
       this.props.setSearchValue("");
@@ -115,7 +102,6 @@ class HeaderComponent extends Component {
           <div className="header-user">
             {isAuth && (
               <div>
-                {/* <p className="welcome">Welcome</p>{" "} */}
                 <span className="name">{googleName}</span>
               </div>
             )}
@@ -143,7 +129,7 @@ class HeaderComponent extends Component {
   }
 }
 
-const mapState = state => {
+const mapState = (state) => {
   return {
     googleName: state.googleReducer.googleName,
     isAuth: state.googleReducer.isAuth,
@@ -151,7 +137,7 @@ const mapState = state => {
     searchAlbums: state.searchReducer.searchAlbums,
     searchTracks: state.searchReducer.searchTracks,
     searchArtists: state.searchReducer.searchArtists,
-    hitsSearch: state.searchReducer.hitsSearch
+    hitsSearch: state.searchReducer.hitsSearch,
   };
 };
 
@@ -162,7 +148,7 @@ const dispatch = {
   getSearchAlbums: getSearchAlbums,
   getSearchArtist: getSearchArtist,
   getSearchTracks: getSearchTracks,
-  getSearchMusic: getSearchMusic
+  getSearchMusic: getSearchMusic,
 };
 
 export default connect(mapState, dispatch)(HeaderComponent);

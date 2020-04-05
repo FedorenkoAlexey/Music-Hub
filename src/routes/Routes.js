@@ -34,9 +34,9 @@ class Routes extends PureComponent {
   }
 }
 
-const mapState = state => {
+const mapState = (state) => {
   return {
-    isAuth: state.googleReducer.isAuth
+    isAuth: state.googleReducer.isAuth,
   };
 };
 

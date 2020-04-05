@@ -160,12 +160,6 @@ class HomeComponent extends Component {
               </button>
             ) : (
               <button className="login-btn" onClick={this.onLogin}>
-                {/* {isLoading && (
-                  <i
-                    className="fa fa-spinner fa-spin fa-1g fa-fw"
-                    style={{ marginRight: "5px" }}
-                  />
-                )} */}
                 Sign In
               </button>
             )}

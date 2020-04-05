@@ -229,7 +229,9 @@ class ChartTrackComponent extends Component {
           {this.state.arrPages.map(page => (
             <li className="li-number" key={page}>
               <a
-                className={this.state.currentPage == page ? "active" : "number"}
+                className={
+                  this.state.currentPage === page ? "active" : "number"
+                }
                 onClick={() => this.paginate(page)}
               >
                 {page}

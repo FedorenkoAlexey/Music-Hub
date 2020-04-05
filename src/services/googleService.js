@@ -2,10 +2,12 @@ export default class googleService {
   googleInit = () => {
     console.log(" window.gapi.load/");
     return setTimeout(() => {
-      window.gapi.load("auth2", function() {
+      window.gapi.load("auth2", function () {
         window.gapi.auth2
           .init({
-            client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID
+            // client_id:
+            //   "762440956309-8nl3fgkbvqagfekoh8ru3q726rrr8gue.apps.googleusercontent.com",
+            client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
           })
           .then(
             () => console.log("Inin OK"),
@@ -16,7 +18,7 @@ export default class googleService {
   };
 
   signIn = () => {
-    const isAuthOk = googleUser => {
+    const isAuthOk = (googleUser) => {
       console.log("googleUser:", googleUser.getBasicProfile().getName());
       return googleUser.getBasicProfile();
     };

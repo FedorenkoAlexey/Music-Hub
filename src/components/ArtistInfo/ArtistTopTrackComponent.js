@@ -63,13 +63,14 @@ class ArtistTopTrackComponent extends Component {
 
   render() {
     const { track } = this.props.topTracks;
+    const { first, hitsPerPage, totalPage } = this.state;
     return (
       <div className="toptrack-wrap">
         <div className="paginator">
           <Paginator
-            first={this.state.first}
-            rows={this.state.hitsPerPage}
-            totalRecords={this.state.totalPage}
+            first={first}
+            rows={hitsPerPage}
+            totalRecords={totalPage}
             rowsPerPageOptions={[10, 20, 30]}
             onPageChange={e => this.onPageChange(e)}
             // onPageChange={e => this.setState({ first: e.first, hits: e.rows })}

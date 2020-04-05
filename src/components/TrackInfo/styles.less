@@ -1,21 +1,74 @@
 .track-container {
-  .track-img {
-    width: 450px;
-    height: 350px;
-    margin-left: 50px;
-    background-size: cover;
-  }
+  background-color: #272731;
+  border: 1px solid #272731;
+  .track-info-wrap {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: start;
+    flex-direction: row;
+    // background-color: #293c64;
+    // height: 400px;
 
-  .apple-music {
-    color: blue;
-    width: 100px;
-    min-height: 24px;
-    background-image: url("https://assets.sonos.com/care/kb/images/FAQ3646/Apple_Music_Logo.png");
-    background-size: contain;
+    .track-img {
+      margin: 50px 0 50px 50px;
+      min-width: 500px;
+      height: 350px;
+      background-size: cover;
+    }
+
+    .track-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      margin-left: 100px;
+      min-width: 450px;
+      // width: 100vh;
+      // border: red 1px solid;
+
+      .artist-name {
+        color: #fff;
+        font-size: 30px;
+        text-align: left;
+        margin-top: 50px;
+        opacity: 0.7;
+      }
+
+      .track-name {
+        color: rgb(0, 210, 11);
+        font-size: 70px;
+        font-weight: 700;
+        // margin-left: -50px;
+        // border: red 1px solid;
+        text-align: left;
+      }
+
+      .release {
+        color: #fff;
+        font-weight: 600;
+        font-size: 28px;
+        // border: red 1px solid;
+        text-align: left;
+        // margin-left: 20px;
+      }
+
+      .apple-music {
+        // color: blue;
+        width: 100px;
+        height: 23px;
+        min-height: 24px;
+        margin-top: 120px;
+        margin-bottom: 20px;
+        background-image: url("https://assets.sonos.com/care/kb/images/FAQ3646/Apple_Music_Logo.png");
+        background-size: contain;
+        // border: red 1px solid;
+      }
+    }
   }
 
   .media {
-    margin: 10px 0;
+    margin: 50px;
+    // margin-bottom: 20px;
+
     .soundcloud {
       color: rgb(255, 187, 0);
       width: 99px;
@@ -24,6 +77,7 @@
       background-size: contain;
     }
     .youtube {
+      margin-bottom: 20px;
       color: red;
       width: 95px;
       min-height: 40px;

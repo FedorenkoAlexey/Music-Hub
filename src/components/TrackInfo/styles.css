@@ -1,18 +1,56 @@
-.track-container .track-img {
-  width: 450px;
+.track-container {
+  background-color: #272731;
+  border: 1px solid #272731;
+}
+.track-container .track-info-wrap {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: start;
+  flex-direction: row;
+}
+.track-container .track-info-wrap .track-img {
+  margin: 50px 0 50px 50px;
+  min-width: 500px;
   height: 350px;
-  margin-left: 50px;
   background-size: cover;
 }
-.track-container .apple-music {
-  color: blue;
+.track-container .track-info-wrap .track-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  margin-left: 100px;
+  min-width: 450px;
+}
+.track-container .track-info-wrap .track-info .artist-name {
+  color: #fff;
+  font-size: 30px;
+  text-align: left;
+  margin-top: 50px;
+  opacity: 0.7;
+}
+.track-container .track-info-wrap .track-info .track-name {
+  color: #00d20b;
+  font-size: 70px;
+  font-weight: 700;
+  text-align: left;
+}
+.track-container .track-info-wrap .track-info .release {
+  color: #fff;
+  font-weight: 600;
+  font-size: 28px;
+  text-align: left;
+}
+.track-container .track-info-wrap .track-info .apple-music {
   width: 100px;
+  height: 23px;
   min-height: 24px;
+  margin-top: 120px;
+  margin-bottom: 20px;
   background-image: url("https://assets.sonos.com/care/kb/images/FAQ3646/Apple_Music_Logo.png");
   background-size: contain;
 }
 .track-container .media {
-  margin: 10px 0;
+  margin: 50px;
 }
 .track-container .media .soundcloud {
   color: #ffbb00;
@@ -22,6 +60,7 @@
   background-size: contain;
 }
 .track-container .media .youtube {
+  margin-bottom: 20px;
   color: red;
   width: 95px;
   min-height: 40px;

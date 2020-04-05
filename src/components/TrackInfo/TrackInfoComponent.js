@@ -26,18 +26,18 @@ class TrackInfoComponent extends Component {
           //   url: "",
           //   provider: ""
           // }
-        ]
-      }
+        ],
+      },
     };
   }
 
   componentDidMount() {
     const trackID = this.props.match.params.id || "";
-    this.api.trackInfo(trackID).then(res => {
+    this.api.trackInfo(trackID).then((res) => {
       console.log("TR_COMP", res.data.response);
       this.setState(
         {
-          song: res.data.response.song
+          song: res.data.response.song,
         },
         () => {
           console.log(this.state);
@@ -48,19 +48,31 @@ class TrackInfoComponent extends Component {
 
   render() {
     const image_url = this.state.song.header_image_url;
+    const { song } = this.state;
     return (
       <div className="track-container">
-        Track Info
-        <div
-          className="track-img"
-          style={{
-            backgroundImage: `url(${image_url})`
-          }}
-        ></div>
         {image_url ? (
-          <a href={this.state.song.apple_music_player_url}>
-            <div className="apple-music"></div>
-          </a>
+          <div className="track-info-wrap">
+            <div
+              className="track-img"
+              style={{
+                backgroundImage: `url(${image_url})`,
+              }}
+            ></div>
+            <div className="track-info">
+              <div className="artist-name">{song.album.artist.name}</div>
+              <div className="track-name">{song.title}</div>
+
+              {/* <div className="album-name">Album: {song.album.name}</div> */}
+              <div className="release">{song.release_date_for_display}</div>
+              <a
+                className="apple-music"
+                href={this.state.song.apple_music_player_url}
+              >
+                {/* <div className="apple-music"></div> */}
+              </a>
+            </div>
+          </div>
         ) : (
           <ProgressSpinner
             className="spinner"
@@ -69,11 +81,10 @@ class TrackInfoComponent extends Component {
             animationDuration=".5s"
           />
         )}
-        {/* <a href={this.state.song.media[0].url}> YouTube </a> */}
-        {this.state.song.media.map(media => (
+
+        {this.state.song.media.map((media) => (
           <div className="media" key={media.url}>
             <a href={media.url}>
-              {/* <div className={media.provider}></div> */}
               {media.provider === "youtube" ? (
                 <ReactPlayer url={media.url} />
               ) : (
@@ -89,7 +100,7 @@ class TrackInfoComponent extends Component {
 
 const mapState = (state, ownProps) => {
   return {
-    hitsSearch: state.searchReducer.hitsSearch
+    hitsSearch: state.searchReducer.hitsSearch,
   };
 };
 

@@ -26,13 +26,16 @@ const initState = {
       {
         image: [
           {
-            ["#text"]: []
+            // ["#text"]: []
+            text: []
           },
           {
-            ["#text"]: []
+            // ["#text"]: []
+            text: []
           },
           {
-            ["#text"]: []
+            // ["#text"]: []
+            text: []
           }
         ]
       }
@@ -42,13 +45,16 @@ const initState = {
     album: {
       image: [
         {
-          ["#text"]: []
+          // ["#text"]: []
+          text: []
         },
         {
-          ["#text"]: []
+          // ["#text"]: []
+          text: []
         },
         {
-          ["#text"]: []
+          // ["#text"]: []
+          text: []
         }
       ],
       tracks: {

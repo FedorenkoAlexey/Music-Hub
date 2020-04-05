@@ -12,7 +12,7 @@ import { setSearchValue } from "../../store/actions/getTracks";
 import {
   getSearchAlbums,
   getSearchArtist,
-  getSearchTracks
+  getSearchTracks,
 } from "../../store/actions/search";
 
 class SearchComponent extends Component {
@@ -22,32 +22,32 @@ class SearchComponent extends Component {
   componentDidMount() {
     // console.log("search ", this.props);
     const search = this.props.match.params.id;
-    console.log(search);
+    console.log("search", search);
     this.onSearch(search);
   }
 
   artInfo = (artistName, albumName) => {
-    this.api.getAlbumTrack(artistName, albumName).then(res => {
+    this.api.getAlbumTrack(artistName, albumName).then((res) => {
       this.props.getAlbumInfo(res.data);
     });
   };
 
-  onSearch = params => {
+  onSearch = (params) => {
     if (params === "") {
       console.log("Set search params");
     } else {
-      this.apiSearch.getSearchArtist(params).then(res => {
+      this.apiSearch.getSearchArtist(params).then((res) => {
         this.props.getSearchArtist(res.data.results.artistmatches);
         console.log("RES_SEARCH_ARTIST", res.data.results.artistmatches);
         console.log("Props_ARTIST", this.props);
       });
 
-      this.apiSearch.getSearchAlbums(params).then(res => {
+      this.apiSearch.getSearchAlbums(params).then((res) => {
         this.props.getSearchAlbums(res.data.results.albummatches);
         console.log("RES_SEARCH_Albums", res.data.results.albummatches);
       });
 
-      this.apiSearch.getSearchTracks(params).then(res => {
+      this.apiSearch.getSearchTracks(params).then((res) => {
         this.props.getSearchTracks(res.data.results.trackmatches);
         console.log("RES_SEARCH_TRAKS", res.data.results.trackmatches);
       });
@@ -66,7 +66,7 @@ class SearchComponent extends Component {
         <div className="search-res-artist">Artists results</div>
 
         <ul className="search-artist">
-          {artist.map(artist => (
+          {artist.map((artist) => (
             <li className="artist-item" key={artist.url + artist.listeners}>
               {/* <div className="artist-name">{artist.name}</div> */}
 
@@ -88,7 +88,7 @@ class SearchComponent extends Component {
           {/* <button onClick={() => this.click()}>!!!!!!</button> */}
         </div>
         <ul className="search-albums">
-          {album.map(album => (
+          {album.map((album) => (
             <li className="album-item" key={album.name + album.url}>
               <div className="album-img">
                 <img
@@ -105,7 +105,7 @@ class SearchComponent extends Component {
                   className="album-name"
                   to={{
                     pathname: `/artist/${album.artist}/album/${album.name}`,
-                    state: { artistName: album.artist }
+                    state: { artistName: album.artist },
                   }}
                 >
                   {album.name}{" "}
@@ -145,13 +145,13 @@ class SearchComponent extends Component {
         </ol> */}
 
         <ol className="search-tracks">
-          {hits.map(hit => (
+          {hits.map((hit) => (
             <li className="track-item" key={hit.result.id}>
               <div className="track-block">
                 <div
                   className="track-img"
                   style={{
-                    backgroundImage: `url(${hit.result.header_image_url} )`
+                    backgroundImage: `url(${hit.result.header_image_url} )`,
                   }}
                 ></div>
                 {/* <div className="track-name">
@@ -193,7 +193,7 @@ const mapState = (state, ownProps) => {
     searchAlbums: state.searchReducer.searchAlbums,
     searchTracks: state.searchReducer.searchTracks,
     searchArtists: state.searchReducer.searchArtists,
-    hitsSearch: state.searchReducer.hitsSearch
+    hitsSearch: state.searchReducer.hitsSearch,
   };
 };
 
@@ -203,7 +203,7 @@ const dispatch = {
   setSearchValue: setSearchValue,
   getSearchAlbums: getSearchAlbums,
   getSearchArtist: getSearchArtist,
-  getSearchTracks: getSearchTracks
+  getSearchTracks: getSearchTracks,
 };
 
 export default connect(mapState, dispatch)(SearchComponent);

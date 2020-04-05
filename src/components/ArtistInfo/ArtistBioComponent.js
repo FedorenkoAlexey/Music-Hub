@@ -28,7 +28,7 @@ class ArtistBioComponent extends Component {
       .then(res => {
         this.props.getArtistInfo(res.data);
         let bio = this.props.artistInfo.artist.bio.content;
-        console.log(res.data.artist.stats);
+        // console.log(res.data.artist.stats);
         return bio;
       })
       .then(bio => {
@@ -44,7 +44,7 @@ class ArtistBioComponent extends Component {
       });
   }
   render() {
-    const { artist } = this.props.artistInfo;
+    // const { artist } = this.props.artistInfo;
     const { bio } = this.state;
     return (
       <div className="bio-wrap">

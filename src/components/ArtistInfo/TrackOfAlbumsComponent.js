@@ -30,7 +30,6 @@ class TrackOfAlbumsComponent extends Component {
   }
 
   render() {
-    const { artist } = this.props.artistInfo;
     const { album } = this.props.albumInfo;
     const { track } = this.props.albumInfo.album.tracks;
     return (
