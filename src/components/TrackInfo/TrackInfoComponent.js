@@ -13,20 +13,12 @@ class TrackInfoComponent extends Component {
     super(props);
     this.state = {
       song: {
-        media: [
-          // {
-          //   url: "",
-          //   provider: ""
-          // },
-          // {
-          //   url: "",
-          //   provider: ""
-          // },
-          // {
-          //   url: "",
-          //   provider: ""
-          // }
-        ],
+        album: {
+          artist: {
+            name: "",
+          },
+        },
+        media: [],
       },
     };
   }
@@ -60,29 +52,30 @@ class TrackInfoComponent extends Component {
               }}
             ></div>
             <div className="track-info">
-              <div className="artist-name">{song.album.artist.name}</div>
+              {song.album ? (
+                <div className="artist-name">{song.album.artist.name}</div>
+              ) : (
+                <p></p>
+              )}
+
               <div className="track-name">{song.title}</div>
 
-              {/* <div className="album-name">Album: {song.album.name}</div> */}
               <div className="release">{song.release_date_for_display}</div>
-              <a
-                className="apple-music"
-                href={this.state.song.apple_music_player_url}
-              >
-                {/* <div className="apple-music"></div> */}
-              </a>
+              <a className="apple-music" href={song.apple_music_player_url}></a>
             </div>
           </div>
         ) : (
-          <ProgressSpinner
-            className="spinner"
-            strokeWidth="7"
-            // fill="#7e95c0"
-            animationDuration=".5s"
-          />
+          <div className="spinner-cont">
+            <ProgressSpinner
+              className="spinner"
+              strokeWidth="7"
+              // fill="#7e95c0"
+              animationDuration=".5s"
+            />
+          </div>
         )}
 
-        {this.state.song.media.map((media) => (
+        {song.media.map((media) => (
           <div className="media" key={media.url}>
             <a href={media.url}>
               {media.provider === "youtube" ? (

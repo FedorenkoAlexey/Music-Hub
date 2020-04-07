@@ -16,7 +16,7 @@ class HomeComponent extends Component {
     super(props);
     this.state = {
       login: "",
-      password: ""
+      password: "",
     };
   }
 
@@ -28,7 +28,7 @@ class HomeComponent extends Component {
   }
 
   onSignIn = () => {
-    this.apiGoogle.signIn().then(res => {
+    this.apiGoogle.signIn().then((res) => {
       this.props.getGoogleName(res.getName());
       this.props.isGoogleAuth(true);
       cookie.save("token", res.getName(), { path: "/" });
@@ -45,7 +45,7 @@ class HomeComponent extends Component {
       console.log("YES");
       this.setState({
         login: "",
-        password: ""
+        password: "",
       });
       this.props.isGoogleAuth(true);
       this.props.getGoogleName(login);
@@ -82,22 +82,23 @@ class HomeComponent extends Component {
     });
   };
 
-  onLoginHandle = e => {
+  onLoginHandle = (e) => {
     console.log(e.target.value);
     this.setState({
-      login: e.target.value
+      login: e.target.value,
     });
   };
 
-  onPasswordHandle = e => {
+  onPasswordHandle = (e) => {
     this.setState({
-      password: e.target.value
+      password: e.target.value,
     });
   };
+  y;
 
   onGenius = () => {
     // this.apiMusic.onSearch("madonna");
-    this.apiMusic.trackInfo().then(res => console.log("INFO", res.data));
+    this.apiMusic.trackInfo().then((res) => console.log("INFO", res.data));
   };
 
   render() {
@@ -105,7 +106,7 @@ class HomeComponent extends Component {
     const { login, password } = this.state;
     return (
       <div className="home-wrapper">
-        <button onClick={this.onGenius}>!!!!!!!!!</button>
+        {/* <button onClick={this.onGenius}>!!!!!!!!!</button> */}
         <div className="left-wrap">
           <div className="message">
             {isAuth ? (
@@ -170,18 +171,18 @@ class HomeComponent extends Component {
   }
 }
 
-const mapState = state => {
+const mapState = (state) => {
   return {
     googleName: state.googleReducer.googleName,
     isAuth: state.googleReducer.isAuth,
     authLogin: state.googleReducer.authLogin,
-    authPassword: state.googleReducer.authPassword
+    authPassword: state.googleReducer.authPassword,
   };
 };
 
 const dispatch = {
   getGoogleName: getGoogleName,
-  isGoogleAuth: isGoogleAuth
+  isGoogleAuth: isGoogleAuth,
 };
 
 export default connect(mapState, dispatch)(HomeComponent);

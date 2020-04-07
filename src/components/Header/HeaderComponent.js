@@ -20,6 +20,7 @@ import "primereact/resources/themes/nova-light/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import "./styles.css";
+import "./media.css";
 import "./fonts.css";
 
 class HeaderComponent extends Component {
@@ -54,10 +55,10 @@ class HeaderComponent extends Component {
         console.log("RES_SEARCH_Albums", res.data.results.albummatches);
       });
 
-      this.apiSearch.getSearchTracks(params).then((res) => {
-        this.props.getSearchTracks(res.data.results.trackmatches);
-        console.log("RES_SEARCH_TRAKS", res.data.results.trackmatches);
-      });
+      // this.apiSearch.getSearchTracks(params).then((res) => {
+      //   this.props.getSearchTracks(res.data.results.trackmatches);
+      //   console.log("RES_SEARCH_TRAKS", res.data.results.trackmatches);
+      // });
 
       //=================================================//
       this.apiMusic.onSearch(params).then((res) => {

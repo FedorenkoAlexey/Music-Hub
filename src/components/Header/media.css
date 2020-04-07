@@ -1,0 +1,29 @@
+@media only screen and (max-width: 1100px) {
+  .wrapper .header .header-nav h2 {
+    font-family: "Caveat";
+    font-size: 100px;
+    color: #ff3c00;
+  }
+
+  .wrapper .header .header-nav .navlink {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-family: "Federo";
+    font-size: 25px;
+  }
+
+  .wrapper .header .header-logo .logo {
+    font-family: "Caveat";
+    font-size: 30px;
+    color: #ff3c00;
+  }
+}
+
+@media only screen and (max-width: 840px) {
+  .wrapper .header .header-nav h2 {
+    font-family: "Caveat";
+    font-size: 70px;
+    color: #ff3c00;
+  }
+}
