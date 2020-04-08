@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Route, Switch, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Dropdown } from "primereact/dropdown";
-import axios from "axios";
 import apiService from "../../services/apiService";
 import artistService from "../../services/artistService";
-import ChartTagComponent from "../ChartTag/ChartTagComponent";
 import { getChartTracks, getArtistInfo } from "../../store/actions/getTracks";
 
 import rock from "../../assets/images/rock.png";
@@ -36,7 +34,7 @@ class ChartTrackComponent extends Component {
       // arrPages: [1, 2, 3, 4, 5],
       arrPages: [],
       currentPage: 1,
-      tag: "rock"
+      tag: "rock",
     };
   }
 
@@ -45,8 +43,8 @@ class ChartTrackComponent extends Component {
     this.getTagChart(tag, hitsPerPage, currentPage);
   }
 
-  getArtInfo = artistName => {
-    this.artistService.getArtist(artistName).then(res => {
+  getArtInfo = (artistName) => {
+    this.artistService.getArtist(artistName).then((res) => {
       this.props.getArtistInfo(res.data);
     });
   };
@@ -54,7 +52,7 @@ class ChartTrackComponent extends Component {
   getTagChart = (tag, hits, page) => {
     this.apiService
       .getTagChartTracks(tag, this.state.hitsPerPage, this.state.currentPage)
-      .then(res => {
+      .then((res) => {
         this.props.getChartTracks(res.data);
         // console.log("RES", res.data);
         console.log("PAGES", res.data.tracks["@attr"].totalPages);
@@ -63,10 +61,10 @@ class ChartTrackComponent extends Component {
 
         res.data.tracks["@attr"].totalPages > 20
           ? this.setState({
-              totalPage: 20
+              totalPage: 20,
             })
           : this.setState({
-              totalPage: res.data.tracks["@attr"].totalPages
+              totalPage: res.data.tracks["@attr"].totalPages,
             });
 
         for (let i = 1; i <= this.state.totalPage; i++) {
@@ -74,7 +72,7 @@ class ChartTrackComponent extends Component {
         }
 
         this.setState({
-          arrPages: pages
+          arrPages: pages,
         });
 
         // console.log("this.state.tag ", this.state.tag, "tag", tag);
@@ -82,16 +80,16 @@ class ChartTrackComponent extends Component {
           ? console.log("Tag without changes")
           : this.setState({
               currentPage: 1,
-              tag: tag
+              tag: tag,
             });
       });
   };
 
-  onHitsChange = e => {
+  onHitsChange = (e) => {
     const hits = e.target.value;
     this.setState(
       {
-        hitsPerPage: hits
+        hitsPerPage: hits,
       },
       () => {
         console.log(this.state.tag, hits, this.state.currentPage);
@@ -100,10 +98,10 @@ class ChartTrackComponent extends Component {
     );
   };
 
-  paginate = number => {
+  paginate = (number) => {
     this.setState(
       {
-        currentPage: number
+        currentPage: number,
       },
       () => {
         this.getTagChart(this.state.tag, this.state.hitsPerPage, number);
@@ -116,7 +114,6 @@ class ChartTrackComponent extends Component {
   render() {
     const { track } = this.props.chartTracks.tracks;
     const HITS = [{ value: 10 }, { value: 15 }, { value: 20 }];
-    const { artist } = this.props.artistInfo;
     return (
       <div className="chart-container">
         <div className="nav-chart">
@@ -192,11 +189,8 @@ class ChartTrackComponent extends Component {
             className="dropdown"
           />
         </div>
-        <Switch>
-          <Route exact path="/chart/:id" component={ChartTagComponent} />
-        </Switch>
         <ul className="chart-tracks">
-          {track.map(track => (
+          {track.map((track) => (
             <li className="track-item" key={track.name + track.duration}>
               <div className="track-block">
                 <div className="track-name">{track.name} </div>
@@ -226,7 +220,7 @@ class ChartTrackComponent extends Component {
           ))}
         </ul>
         <ul className="number-pages">
-          {this.state.arrPages.map(page => (
+          {this.state.arrPages.map((page) => (
             <li className="li-number" key={page}>
               <a
                 className={
@@ -247,13 +241,13 @@ class ChartTrackComponent extends Component {
 const mapState = (state, ownProps) => {
   return {
     chartTracks: state.trackReducer.chartTracks,
-    artistInfo: state.trackReducer.artistInfo
+    artistInfo: state.trackReducer.artistInfo,
   };
 };
 
 const dispatch = {
   getChartTracks: getChartTracks,
-  getArtistInfo: getArtistInfo
+  getArtistInfo: getArtistInfo,
 };
 
 export default connect(mapState, dispatch)(ChartTrackComponent);

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import "./trackstyles.css";
+import "./styles.css";
 
 import artistService from "../../services/artistService";
 import { getArtistInfo, getAlbumInfo } from "../../store/actions/getTracks";
@@ -10,7 +10,7 @@ class TrackOfAlbumsComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      image: ""
+      image: "",
     };
   }
 
@@ -20,10 +20,10 @@ class TrackOfAlbumsComponent extends Component {
     console.log("Props: ", this.props);
     // console.log("PROPS_TRACK_ALBUMS: ", this.props.albumInfo.album);
 
-    this.api.getAlbumTrack(artistName, albumName).then(res => {
+    this.api.getAlbumTrack(artistName, albumName).then((res) => {
       this.props.getAlbumInfo(res.data);
       this.setState({
-        image: this.props.albumInfo.album.image[3]["#text"]
+        image: this.props.albumInfo.album.image[3]["#text"],
       });
       console.log("RESULT_TRACK_ALBUMS: ", res.data);
     });
@@ -51,7 +51,7 @@ class TrackOfAlbumsComponent extends Component {
           </div>
         </div>
         <ul className="album-track">
-          {track.map(track => (
+          {track.map((track) => (
             <li className="track-item" key={track.name}>
               <div className="track-block">
                 <div className="track-name">{track.name} </div>
@@ -68,12 +68,12 @@ class TrackOfAlbumsComponent extends Component {
 const mapState = (state, ownProps) => {
   return {
     artistInfo: state.trackReducer.artistInfo,
-    albumInfo: state.trackReducer.albumInfo
+    albumInfo: state.trackReducer.albumInfo,
   };
 };
 const dispatch = {
   getArtistInfo: getArtistInfo,
-  getAlbumInfo: getAlbumInfo
+  getAlbumInfo: getAlbumInfo,
 };
 
 export default connect(mapState, dispatch)(TrackOfAlbumsComponent);

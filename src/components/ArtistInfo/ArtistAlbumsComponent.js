@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./albumstyles.css";
 import cover from "../../assets/images/noCover.png";
 
@@ -14,10 +14,10 @@ class ArtistAlbumsComponent extends Component {
     console.log("Props_Art-Album", this.props);
 
     this.props.artistInfo.artist === ""
-      ? this.api.getArtist(artistName).then(res => {
+      ? this.api.getArtist(artistName).then((res) => {
           this.props.getArtistInfo(res.data);
         }) &&
-        this.api.getTopAlbums(artistName).then(res => {
+        this.api.getTopAlbums(artistName).then((res) => {
           this.props.getTopAlbums(res.data.topalbums);
         })
       : console.log("");
@@ -30,13 +30,13 @@ class ArtistAlbumsComponent extends Component {
       <div className="albums-wrapper">
         <p className="text-artist-name">{artist.name} albums:</p>
         <ul className="search-albums">
-          {album.map(album => (
+          {album.map((album) => (
             <li className="album-item" key={album.name}>
               <Link
                 className="text-link"
                 to={{
                   pathname: `/artist/${artist.name}/album/${album.name}`,
-                  state: { artistName: artist.name }
+                  state: { artistName: artist.name },
                 }}
               >
                 <div className="album-img">
@@ -64,12 +64,12 @@ class ArtistAlbumsComponent extends Component {
 const mapState = (state, ownProps) => {
   return {
     artistInfo: state.trackReducer.artistInfo,
-    topAlbums: state.trackReducer.topAlbums
+    topAlbums: state.trackReducer.topAlbums,
   };
 };
 const dispatch = {
   getArtistInfo: getArtistInfo,
-  getTopAlbums: getTopAlbums
+  getTopAlbums: getTopAlbums,
 };
 
 export default connect(mapState, dispatch)(ArtistAlbumsComponent);

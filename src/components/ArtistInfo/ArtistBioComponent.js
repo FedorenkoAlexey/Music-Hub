@@ -16,7 +16,7 @@ class ArtistBioComponent extends Component {
     super(props);
     this.state = {
       bio: "",
-      err: "spinner"
+      err: "spinner",
     };
   }
 
@@ -25,20 +25,20 @@ class ArtistBioComponent extends Component {
 
     this.api
       .getArtist(artistName)
-      .then(res => {
+      .then((res) => {
         this.props.getArtistInfo(res.data);
         let bio = this.props.artistInfo.artist.bio.content;
         // console.log(res.data.artist.stats);
         return bio;
       })
-      .then(bio => {
+      .then((bio) => {
         let index = bio.indexOf("<a");
         let answ = bio.slice(0, index);
 
         setTimeout(() => {
           this.setState({
             bio: answ,
-            err: "err"
+            err: "err",
           });
         }, 300);
       });
@@ -49,8 +49,8 @@ class ArtistBioComponent extends Component {
     return (
       <div className="bio-wrap">
         {bio ? (
-          <ScrollPanel className="custom" style={{ fontSize: "20px" }}>
-            <p>{bio}</p>
+          <ScrollPanel className="custom">
+            <p className="text">{bio}</p>
           </ScrollPanel>
         ) : this.state.err === "spinner" ? (
           <ProgressSpinner
@@ -71,11 +71,11 @@ class ArtistBioComponent extends Component {
 
 const mapState = (state, ownProps) => {
   return {
-    artistInfo: state.trackReducer.artistInfo
+    artistInfo: state.trackReducer.artistInfo,
   };
 };
 const dispatch = {
-  getArtistInfo: getArtistInfo
+  getArtistInfo: getArtistInfo,
 };
 
 export default connect(mapState, dispatch)(ArtistBioComponent);

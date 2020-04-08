@@ -3,9 +3,9 @@ import { connect } from "react-redux";
 import { Route, Switch, NavLink } from "react-router-dom";
 
 import ArtistBioComponent from "../ArtistInfo/ArtistBioComponent";
-import ArtistTopTrackComponent from "../ArtistInfo/ArtistTopTrackComponent";
+import ArtistTopTrackComponent from "../ArtistTopTrack/ArtistTopTrackComponent";
 import ArtistAlbumsComponent from "../ArtistInfo/ArtistAlbumsComponent";
-import TrackOfAlbumsComponent from "../ArtistInfo/TrackOfAlbumsComponent";
+import TrackOfAlbumsComponent from "../TrackOfAlbums/TrackOfAlbumsComponent";
 import artistService from "../../services/artistService";
 
 import { getArtistInfo, getTopAlbums } from "../../store/actions/getTracks";
@@ -18,24 +18,24 @@ class ArtistNameComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      image: ""
+      image: "",
     };
   }
 
   componentDidMount() {
     const artistName = this.props.match.params.id || "";
-    this.api.getArtist(artistName).then(res => {
+    this.api.getArtist(artistName).then((res) => {
       this.props.getArtistInfo(res.data);
     });
-    console.log("Start ArtNameComp", artistName);
+    // console.log("Start ArtNameComp", artistName);
 
-    this.api.getTopAlbums(artistName).then(result => {
+    this.api.getTopAlbums(artistName).then((result) => {
       this.props.getTopAlbums(result.data.topalbums);
       const apiImage = this.props.topAlbums.album[0].image[3]["#text"];
       // const apiImage = "";
       apiImage
         ? this.setState({
-            image: apiImage
+            image: apiImage,
           })
         : console.log("No artist image");
     });
@@ -89,7 +89,7 @@ class ArtistNameComponent extends Component {
                 rgba(65, 69, 78, 0),
                 rgb(3, 50, 82) 100%
               ), 
-              url(${this.state.image} )`
+              url(${this.state.image} )`,
             }}
           >
             {/* <img src={this.state.image} alt={artist.name} /> */}
@@ -110,7 +110,6 @@ class ArtistNameComponent extends Component {
         </Switch>
         <div className="art-div"></div>
       </div>
-      
     );
   }
 }
@@ -121,13 +120,13 @@ const mapState = (state, ownProps) => {
   // console.log("OWN: ", ownProps.match.params.id);
   return {
     artistInfo: state.trackReducer.artistInfo,
-    topAlbums: state.trackReducer.topAlbums
+    topAlbums: state.trackReducer.topAlbums,
   };
 };
 
 const dispatch = {
   getArtistInfo: getArtistInfo,
-  getTopAlbums: getTopAlbums
+  getTopAlbums: getTopAlbums,
 };
 
 export default connect(mapState, dispatch)(ArtistNameComponent);

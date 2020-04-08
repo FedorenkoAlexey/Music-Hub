@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { InputText } from "primereact/inputtext";
-import { Button } from "primereact/button";
+// import { InputText } from "primereact/inputtext";
+// import { Button } from "primereact/button";
 import googleService from "../../services/googleService";
 import searchService from "../../services/searchService";
 import musicService from "../../services/musicService";

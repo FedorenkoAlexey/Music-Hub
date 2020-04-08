@@ -17,6 +17,8 @@ class HomeComponent extends Component {
     this.state = {
       login: "",
       password: "",
+      errColor: "",
+      fontWeight: "",
     };
   }
 
@@ -57,19 +59,17 @@ class HomeComponent extends Component {
       // }, 1000);
       // cookie.save("token", token, { path: "/" });
     } else {
-      // this.setState({
-      //   errColor: "#ff9595",
-      //   errBorder: " 2px solid red"
-      // });
-      // setTimeout(() => {
-      //   this.setState({
-      //     errColor: "",
-      //     errBorder: ""
-      //   });
-      // }, 2000);
+      this.setState({
+        errColor: "#ff0000",
+        fontWeight: "800",
+      });
+      setTimeout(() => {
+        this.setState({
+          errColor: "",
+          fontWeight: "",
+        });
+      }, 1500);
       console.log("Err");
-      console.log("authLogin", authLogin);
-      console.log("authPassword", authPassword);
     }
   };
 
@@ -83,7 +83,7 @@ class HomeComponent extends Component {
   };
 
   onLoginHandle = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     this.setState({
       login: e.target.value,
     });
@@ -104,6 +104,12 @@ class HomeComponent extends Component {
   render() {
     const { isAuth } = this.props;
     const { login, password } = this.state;
+    const errorColor = {
+      // border: this.state.errBorder,
+      color: this.state.errColor,
+      fontWeight: this.state.fontWeight,
+      // background: this.state.errColor,
+    };
     return (
       <div className="home-wrapper">
         {/* <button onClick={this.onGenius}>!!!!!!!!!</button> */}
@@ -136,7 +142,7 @@ class HomeComponent extends Component {
                 </div>
 
                 <input
-                  // style={errorColor}
+                  style={errorColor}
                   type="text"
                   className="input"
                   placeholder="Login"
@@ -145,7 +151,7 @@ class HomeComponent extends Component {
                 />
                 <div className="line"></div>
                 <input
-                  // style={errorColor}
+                  style={errorColor}
                   type="password"
                   className="input"
                   placeholder="Password"

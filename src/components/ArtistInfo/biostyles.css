@@ -14,6 +14,9 @@
   word-spacing: 5px;
   padding: 50px 0;
 }
+.bio-wrap .custom .text {
+  font-size: 20px;
+}
 .bio-wrap .custom .p-scrollpanel-wrapper {
   border-right: 9px solid #b6e2ff;
 }
