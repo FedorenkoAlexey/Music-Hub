@@ -1,5 +1,6 @@
 .artist-container {
   height: auto;
+  background-color: rgba(0, 134, 243, 0.74);
 }
 .artist-container .artist-header {
   display: flex;
@@ -66,4 +67,42 @@
   background-color: #ff6800;
   border: 1px solid #ff6800;
   cursor: default;
+}
+.artist-container .text-similar {
+  margin: -5px 0;
+  padding-top: 5px;
+  font-weight: 600;
+  color: #737a99;
+  font-size: 35px;
+  height: 10px;
+}
+.artist-container .art-div {
+  height: 200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-flow: wrap;
+  font-family: "Federo";
+  background-color: #2e2e57;
+}
+.artist-container .art-div .similar {
+  border: #fff 1px solid;
+  height: 50px;
+  margin-top: 80px;
+  margin-bottom: -70px;
+  border-radius: 8px;
+  background-color: #272747;
+  padding: 8px 15px;
+  font-size: 24px;
+}
+.artist-container .art-div .similar .track-artist {
+  color: #fff;
+}
+.artist-container .art-div .similar:hover {
+  cursor: pointer;
+  transform: scale(1.03);
+  box-shadow: 0 0 12px #000000;
+}
+.artist-container .art-div .similar:hover .track-artist {
+  color: #ff6600;
 }

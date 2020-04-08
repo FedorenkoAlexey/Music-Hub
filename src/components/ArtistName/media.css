@@ -1,3 +1,19 @@
+@media only screen and (max-width: 1200px) {
+  .artist-container .art-div .similar {
+    border: #fff 1px solid;
+    height: 50px;
+    margin-top: 80px;
+    margin-bottom: -70px;
+    border-radius: 8px;
+    background-color: #272747;
+    padding: 7px 10px;
+    font-size: 14px;
+  }
+  .artist-container .art-div .similar .track-artist {
+    color: #fff;
+  }
+}
+
 @media only screen and (max-width: 890px) {
   .artist-container .artist-nav .text-link {
     margin: 0 10px;

@@ -9,17 +9,23 @@ const initState = {
   searchValue: "",
   chartTracks: {
     tracks: {
-      track: []
-    }
+      track: [],
+    },
   },
   artistInfo: {
     artist: {
       bio: [],
-      stats: []
-    }
+      stats: [],
+      similar: {
+        artist: [],
+      },
+      tags: {
+        tsg: [],
+      },
+    },
   },
   topTracks: {
-    track: []
+    track: [],
   },
   topAlbums: {
     album: [
@@ -27,42 +33,42 @@ const initState = {
         image: [
           {
             // ["#text"]: []
-            text: []
+            text: [],
           },
           {
             // ["#text"]: []
-            text: []
+            text: [],
           },
           {
             // ["#text"]: []
-            text: []
-          }
-        ]
-      }
-    ]
+            text: [],
+          },
+        ],
+      },
+    ],
   },
   albumInfo: {
     album: {
       image: [
         {
           // ["#text"]: []
-          text: []
+          text: [],
         },
         {
           // ["#text"]: []
-          text: []
+          text: [],
         },
         {
           // ["#text"]: []
-          text: []
-        }
+          text: [],
+        },
       ],
       tracks: {
-        track: []
+        track: [],
       },
-      wiki: []
-    }
-  }
+      wiki: [],
+    },
+  },
 };
 
 export const trackReducer = (state = initState, action) => {
@@ -70,32 +76,32 @@ export const trackReducer = (state = initState, action) => {
     case GET_CHART_TRACKS:
       return {
         ...state,
-        chartTracks: action.payload
+        chartTracks: action.payload,
       };
     case GET_TOP_TRACKS:
       return {
         ...state,
-        topTracks: action.payload
+        topTracks: action.payload,
       };
     case GET_ARTIST_INFO:
       return {
         ...state,
-        artistInfo: action.payload
+        artistInfo: action.payload,
       };
     case GET_TOP_ALBUMS:
       return {
         ...state,
-        topAlbums: action.payload
+        topAlbums: action.payload,
       };
     case SET_SEARCH_VALUE:
       return {
         ...state,
-        searchValue: action.payload
+        searchValue: action.payload,
       };
     case GET_ALBUM_INFO:
       return {
         ...state,
-        albumInfo: action.payload
+        albumInfo: action.payload,
       };
   }
   return state;

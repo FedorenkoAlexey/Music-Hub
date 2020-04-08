@@ -1,5 +1,6 @@
 .artist-container {
   height: auto;
+  background-color: rgba(0, 134, 243, 0.74);
 
   .artist-header {
     display: flex;
@@ -81,6 +82,47 @@
       background-color: #ff6800;
       border: 1px solid #ff6800;
       cursor: default;
+    }
+  }
+  .text-similar {
+    margin: -5px 0;
+    padding-top: 5px;
+    font-weight: 600;
+    color: rgb(115, 122, 153);
+    font-size: 35px;
+    height: 10px;
+  }
+  .art-div {
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-flow: wrap;
+    font-family: "Federo";
+    background-color: rgb(46, 46, 87);
+
+    //
+    .similar {
+      border: #fff 1px solid;
+      height: 50px;
+      margin-top: 80px;
+      margin-bottom: -70px;
+      border-radius: 8px;
+      background-color: rgb(39, 39, 71);
+      padding: 8px 15px;
+      font-size: 24px;
+
+      .track-artist {
+        color: #fff;
+      }
+    }
+    .similar:hover {
+      cursor: pointer;
+      transform: scale(1.03);
+      box-shadow: 0 0 12px rgb(0, 0, 0);
+      .track-artist {
+        color: #ff6600;
+      }
     }
   }
   // .art-div {
