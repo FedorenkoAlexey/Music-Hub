@@ -1,13 +1,12 @@
-import { SET_GOOGLE_NAME } from "../actions/googleAuth";
-import { IS_GOOGLE_AUTH } from "../actions/googleAuth";
+import { SET_GOOGLE_NAME, IS_GOOGLE_AUTH } from '../actions/googleAuth'
 
 const initState = {
   googleName: null,
   token: null,
   isAuth: false,
-  authLogin: "Alexey",
-  authPassword: "admin"
-};
+  authLogin: 'Alexey',
+  authPassword: 'admin'
+}
 
 export const googleReducer = (state = initState, action) => {
   switch (action.type) {
@@ -15,12 +14,12 @@ export const googleReducer = (state = initState, action) => {
       return {
         ...state,
         googleName: action.payload
-      };
+      }
     case IS_GOOGLE_AUTH:
       return {
         ...state,
         isAuth: action.payload
-      };
+      }
   }
-  return state;
-};
+  return state
+}

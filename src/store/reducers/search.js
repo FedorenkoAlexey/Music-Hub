@@ -4,10 +4,10 @@ import {
   GET_SEARCH_ALBUMS,
   GET_SEARCH_ARTIST,
   GET_SEARCH_MUSIC
-} from "../actions/search";
+} from '../actions/search'
 
 const initState = {
-  searchValueAll: "",
+  searchValueAll: '',
   searchAlbums: {
     album: []
   },
@@ -32,7 +32,7 @@ const initState = {
       }
     ]
   }
-};
+}
 
 export const searchReducer = (state = initState, action) => {
   switch (action.type) {
@@ -40,27 +40,27 @@ export const searchReducer = (state = initState, action) => {
       return {
         ...state,
         searchValueAll: action.payload
-      };
+      }
     case GET_SEARCH_TRACKS:
       return {
         ...state,
         searchTracks: action.payload
-      };
+      }
     case GET_SEARCH_ALBUMS:
       return {
         ...state,
         searchAlbums: action.payload
-      };
+      }
     case GET_SEARCH_ARTIST:
       return {
         ...state,
         searchArtists: action.payload
-      };
+      }
     case GET_SEARCH_MUSIC:
       return {
         ...state,
         hitsSearch: action.payload
-      };
+      }
   }
-  return state;
-};
+  return state
+}

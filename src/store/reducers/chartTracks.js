@@ -1,31 +1,26 @@
-import { GET_CHART_TRACKS } from "../actions/getTracks";
-import { GET_TOP_TRACKS } from "../actions/getTracks";
-import { GET_ARTIST_INFO } from "../actions/getTracks";
-import { GET_TOP_ALBUMS } from "../actions/getTracks";
-import { SET_SEARCH_VALUE } from "../actions/getTracks";
-import { GET_ALBUM_INFO } from "../actions/getTracks";
+import { GET_CHART_TRACKS, GET_TOP_TRACKS, GET_ARTIST_INFO, GET_TOP_ALBUMS, SET_SEARCH_VALUE, GET_ALBUM_INFO } from '../actions/getTracks'
 
 const initState = {
-  searchValue: "",
+  searchValue: '',
   chartTracks: {
     tracks: {
-      track: [],
-    },
+      track: []
+    }
   },
   artistInfo: {
     artist: {
       bio: [],
       stats: [],
       similar: {
-        artist: [],
+        artist: []
       },
       tags: {
-        tsg: [],
-      },
-    },
+        tsg: []
+      }
+    }
   },
   topTracks: {
-    track: [],
+    track: []
   },
   topAlbums: {
     album: [
@@ -33,76 +28,76 @@ const initState = {
         image: [
           {
             // ["#text"]: []
-            text: [],
+            text: []
           },
           {
             // ["#text"]: []
-            text: [],
+            text: []
           },
           {
             // ["#text"]: []
-            text: [],
-          },
-        ],
-      },
-    ],
+            text: []
+          }
+        ]
+      }
+    ]
   },
   albumInfo: {
     album: {
       image: [
         {
           // ["#text"]: []
-          text: [],
+          text: []
         },
         {
           // ["#text"]: []
-          text: [],
+          text: []
         },
         {
           // ["#text"]: []
-          text: [],
-        },
+          text: []
+        }
       ],
       tracks: {
-        track: [],
+        track: []
       },
-      wiki: [],
-    },
-  },
-};
+      wiki: []
+    }
+  }
+}
 
 export const trackReducer = (state = initState, action) => {
   switch (action.type) {
     case GET_CHART_TRACKS:
       return {
         ...state,
-        chartTracks: action.payload,
-      };
+        chartTracks: action.payload
+      }
     case GET_TOP_TRACKS:
       return {
         ...state,
-        topTracks: action.payload,
-      };
+        topTracks: action.payload
+      }
     case GET_ARTIST_INFO:
       return {
         ...state,
-        artistInfo: action.payload,
-      };
+        artistInfo: action.payload
+      }
     case GET_TOP_ALBUMS:
       return {
         ...state,
-        topAlbums: action.payload,
-      };
+        topAlbums: action.payload
+      }
     case SET_SEARCH_VALUE:
       return {
         ...state,
-        searchValue: action.payload,
-      };
+        searchValue: action.payload
+      }
     case GET_ALBUM_INFO:
       return {
         ...state,
-        albumInfo: action.payload,
-      };
+        albumInfo: action.payload
+      }
   }
-  return state;
-};
+  return state
+}
